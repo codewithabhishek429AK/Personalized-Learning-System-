@@ -1,0 +1,54 @@
+
+@import "tailwindcss";
+
+/* =================================
+   LEARNCRAFT - DESIGN SYSTEM
+================================= */
+
+:root {
+  /* Brand Colors */
+
+  --color-light-blue: #DCE6FF;
+  --color-lavender: #AFA0FF;
+  --color-purple: #6C55F5;
+  --color-dark-purple: #5037E7;
+
+  /* Background Colors */
+
+  --color-background: #F8F9FF;
+  --color-surface: #FFFFFF;
+
+  /* Text Colors */
+
+  --color-heading: #181E56;
+  --color-text: #615F75;
+
+  /* Border */
+
+  --color-border: #EDEAFF;
+
+  /* Brand Gradient */
+
+  --gradient-brand: linear-gradient(
+    110deg,
+    #DCE6FF 0%,
+    #AFA0FF 50%,
+    #6C55F5 100%
+  );
+}
+
+/* =================================
+   GLOBAL STYLES
+================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-heading);
+}
