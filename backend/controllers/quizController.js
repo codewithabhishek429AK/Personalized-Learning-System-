@@ -1,7 +1,7 @@
 
-/* global require, module */
 
 const QuizResult = require("../models/QuizResult");
+const { getTopic } = require("../data/curriculum");
 
 // Save Quiz Result
 const saveQuizResult = async (req, res) => {
@@ -23,6 +23,13 @@ const saveQuizResult = async (req, res) => {
       return res.status(400).json({
         success: false,
         message: "Please provide all quiz details.",
+      });
+    }
+
+    if (!getTopic(subjectId, topicId)) {
+      return res.status(400).json({
+        success: false,
+        message: "Unknown subject or topic.",
       });
     }
 

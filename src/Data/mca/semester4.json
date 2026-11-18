@@ -1,0 +1,440 @@
+{
+  "semester": 4,
+  "title": "Semester 4",
+  "source": "AKTU MCA Second Year Evaluation Scheme & Syllabus, NEP 2020, effective 2025-26",
+  "subjects": [
+    {
+      "code": "BMC031",
+      "name": "Privacy & Security in Online Social Media",
+      "type": "Elective",
+      "group": "Elective-3",
+      "ltp": "3-1-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Introduction to Online Social Networks", "x": "Introduction to Social Networks, From offline to Online Communities, Online Social Networks, Evolution of Online Social Networks, Analysis and Properties, Security Issues in Online Social Networks, Trust Management in Online Social Networks, Controlled Information Sharing in Online Social Networks, Identity Management in Online Social Networks, data collection from social networks, challenges, opportunities, and pitfalls in online social networks, APIs; Collecting data from Online Social Media." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Trust Management in Online Social Networks", "x": "Trust and Policies, Trust and Reputation Systems, Trust in Online Social, Trust Properties, Trust Components, Social Trust and Social Capital, Trust Evaluation Models, Trust, credibility, and reputations in social systems; Online social media and Policing, Information privacy disclosure, revelation, and its effects in OSM and online social networks; Phishing in OSM & Identifying fraudulent entities in online social networks" }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Controlled Information Sharing in Online Social Networks", "x": "Access Control Models, Access Control in Online Social Networks, Relationship-Based Access Control, Privacy Settings in Commercial Online Social Networks, Existing Access Control Approaches" }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Identity Management in Online Social Networks", "x": "Identity Management, Digital Identity, Identity Management Models: From Identity 1.0 to Identity 2.0, Identity Management in Online Social Networks, Identity as Self-Presentation, Identity thefts, Open Security Issues in Online Social Networks" }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Case Study", "x": "Privacy and security issues associated with various social media such as Facebook, Instagram, Twitter, LinkedIn etc." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC032",
+      "name": "Soft Computing",
+      "type": "Elective",
+      "group": "Elective-3",
+      "ltp": "3-0-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Introduction to Soft Computing", "x": "Introduction, Comparison with hard computing, Concept of learning and adaptation, Constituents of soft computing, Applications of soft computing." },
+          { "t": "Artificial Neural Networks", "x": "Basic concepts of neural networks, Human brain, Biological neural network, History of artificial neural networks, Basic building blocks of an artificial neuron, Neural network architectures, Activation functions, Characteristics and limitation of neural networks." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Artificial Neural Networks – Learning Methods", "x": "Learning methods - Supervised, Unsupervised, Reinforcement, Hebbian, Gradient descent, Competitive, Stochastic." },
+          { "t": "Major classes of neural networks", "x": "Perceptron networks, Multilayer perceptron model, Back-propagation network, Radial basis function network, Recurrent neural network, Hopfield networks, Kohonen self-organizing feature maps." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Fuzzy Logic", "x": "Introduction to Fuzzy Logic, Comparison with crisp logic, Properties of classical sets, Operations on classical sets, Properties of fuzzy sets, Operations on fuzzy sets, Classical relations, Fuzzy relations, Features and types of fuzzy membership functions, Fuzzy arithmetic, Fuzzy measures." },
+          { "t": "Fuzzy Systems", "x": "Crisp logic, Predicate logic, Fuzzy logic, Fuzzy propositions, Inference rules, Fuzzy inference systems- Fuzzification, Inference, Defuzzification, Types of inference engines." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Evolutionary Computing", "x": "Introduction, Evolutionary algorithm, Biological evolutionary process, Paradigms of evolutionary computing – Genetic algorithm and Genetic programming, Evolutionary strategies, Evolutionary programming." },
+          { "t": "Genetic Algorithm", "x": "Introduction, Traditional optimization and search techniques, Comparison with traditional algorithms, Operations- Encoding, Selection, Crossover and Mutation, Classification of Genetic algorithm." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Hybrid Soft Computing Techniques", "x": "Introduction, Classification of hybrid systems, Neuro-fuzzy hybrid systems, Neuro-genetic hybrid systems, Fuzzy-genetic hybrid systems." },
+          { "t": "Other Soft Computing Techniques", "x": "Tabu Search, Ant colony based optimization, Swarm Intelligence." }
+        ] }
+      ],
+      "note": "The PDF numbers the last two units 'V' and 'V'; they are shown here as IV and V."
+    },
+    {
+      "code": "BMC033",
+      "name": "Pattern Recognition",
+      "type": "Elective",
+      "group": "Elective-3",
+      "ltp": "3-0-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Introduction", "x": "Basics of pattern recognition, Design principles of pattern recognition system, Learning and adaptation, Pattern recognition approaches, Mathematical foundations – Linear algebra, Probability Theory, Expectation, mean and covariance, Normal distribution, multivariate normal densities, Chi squared test." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Statistical Pattern Recognition", "x": "Bayesian Decision Theory, Classifiers, Normal density and discriminant functions" }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Parameter estimation methods", "x": "Maximum-Likelihood estimation, Bayesian Parameter estimation, Dimension reduction methods - Principal Component Analysis (PCA), Fisher Linear discriminant analysis, Expectation- maximization (EM), Hidden Markov Models (HMM), Gaussian mixture models." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Nonparametric Techniques", "x": "Density Estimation, Parzen Windows, K-Nearest Neighbor Estimation, Nearest Neighbor Rule, Fuzzy classification." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Unsupervised Learning & Clustering", "x": "Criterion functions for clustering, Clustering Techniques: Iterative square - error partitional clustering – K means, agglomerative hierarchical clustering, Cluster validation." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC034",
+      "name": "Data Analytics",
+      "type": "Elective",
+      "group": "Elective-3",
+      "ltp": "4-0-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Introduction to Data Analytics", "x": "Sources and nature of data, classification of data (structured, semi-structured, unstructured), characteristics of data, introduction to Big Data platform, need of data analytics, evolution of analytic scalability, analytic process and tools, analysis vs reporting, modern data analytic tools, applications of data analytics." },
+          { "t": "Data Analytics Lifecycle", "x": "Need, key roles for successful analytic projects, various phases of data analytics lifecycle – discovery, data preparation, model planning, model building, communicating results, operationalization" }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Data Analysis", "x": "Regression modeling, multivariate analysis, Bayesian modeling, inference and Bayesian networks, support vector and kernel methods, analysis of time series: linear systems analysis & nonlinear dynamics, rule induction, Neural Networks: Learning and generalisation, competitive learning, principal component analysis and neural networks, fuzzy logic: extracting fuzzy models from data, fuzzy decision trees, stochastic search methods." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Mining Data Streams", "x": "Introduction to streams concepts, stream data model and architecture, stream computing, sampling data in a stream, filtering streams, counting distinct elements in a stream, estimating moments, counting oneness in a window, decaying window, Real-time Analytics Platform ( RTAP) applications, Case studies – Real time sentiment analysis, stock market predictions." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Frequent Itemsets and Clustering", "x": "Mining frequent itemsets, market based modelling, Apriori algorithm, handling large data sets in main memory, limited pass algorithm, counting frequent itemsets in a stream, Clustering techniques: hierarchical, K-means, clustering high dimensional data, CLIQUE and ProCLUS, frequent pattern based clustering methods, clustering in non-euclidean space, clustering for streams and parallelism." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Frame Works and Visualization", "x": "MapReduce, Hadoop, Pig, Hive, HBase, MapR, Sharding, NoSQL Databases, S3, Hadoop Distributed File Systems, Visualization: visual data analysis techniques, interaction techniques, systems and applications." },
+          { "t": "Introduction to R", "x": "R graphical user interfaces, data import and export, attribute and data types, descriptive statistics, exploratory data analysis, visualization before analysis, analytics for unstructured data." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC035",
+      "name": "Software Quality Engineering",
+      "type": "Elective",
+      "group": "Elective-3",
+      "ltp": "3-1-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Software Quality", "x": "Definition, Software Quality Attributes and Specification, Cost of Quality, Defects, Faults, Failures, Defect Rate and Reliability, Defect Prevention, Reduction, and Containment, Overview of Different Types of Software Review, Introduction to Measurement and Inspection Process, Documents and Metrics." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Software Quality Metrics", "x": "Product Quality Metrics: Defect Density, Customer Problems Metric, Customer Satisfaction Metrics, Function Points, In-Process Quality Metrics: Defect Arrival Pattern, Phase-Based Defect Removal Pattern, Defect Removal Effectiveness, Metrics for Software Maintenance: Backlog Management Index, Fix Response Time, Fix Quality, Software Quality Indicators." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Software Quality Management and Models", "x": "Modeling Process, Software Reliability Models: The Rayleigh Model, Exponential Distribution and Software Reliability Growth Models, Software Reliability Allocation Models, Criteria for Model Evaluation, Software Quality Assessment Models: Hierarchical Model of Software Quality Assessment." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Software Quality Assurance", "x": "Quality Planning and Control, Quality Improvement Process, Evolution of Software Quality Assurance (SQA), Major SQA Activities, Major SQA Issues, Zero Defect Software, SQA Techniques, Statistical Quality Assurance, Total Quality Management, Quality Standards and Processes." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Software Verification, Validation & Testing", "x": "Verification and Validation, Evolutionary Nature of Verification and Validation, Impracticality of Testing all Data and Paths, Proof of Correctness, Software Testing, Functional, Structural and Error-Oriented Analysis & Testing, Static and Dynamic Testing Tools, Characteristics of Modern Testing Tools." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC041",
+      "name": "Blockchain Architecture",
+      "type": "Elective",
+      "group": "Elective-4",
+      "ltp": "4-0-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Introduction to Blockchain", "x": "Digital Money to Distributed Ledgers, Design Primitives: Protocols, Security, Consensus, Permissions, Privacy." },
+          { "t": "Blockchain Architecture and Design", "x": "Basic crypto primitives: Hash, Signature, Hashchain to Blockchain, Bitcoin Basic, Basic consensus mechanisms." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Consensus", "x": "Requirements for the consensus protocols, Proof of Work (PoW), Scalability aspects of Blockchain consensus protocols, distributed consensus, consensus in Bitcoin." },
+          { "t": "Permissioned Blockchains", "x": "Design goals, Consensus protocols for Permissioned Blockchains" }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Hyperledger Fabric", "x": "Decomposing the consensus process, Hyperledger fabric components." },
+          { "t": "Chaincode Design and Implementation Hyperledger Fabric", "x": "Beyond Chaincode: fabric SDK and Front End, Hyperledger composer tool." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Use case 1: Blockchain in Financial Software and Systems (FSS)", "x": "(i) Settlements, (ii) KYC, (iii) Capital markets, (iv) Insurance." },
+          { "t": "Use case 2: Blockchain in trade/supply chain", "x": "(i) Provenance of goods, visibility, trade/supply chain finance, invoice management discounting, etc." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Use case 3: Blockchain for Government", "x": "(i) Digital identity, land records and other kinds of record keeping between government entities, (ii) public distribution system social welfare systems, Blockchain Cryptography, Privacy and Security on Blockchain" }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC042",
+      "name": "Neural Network",
+      "type": "Elective",
+      "group": "Elective-4",
+      "ltp": "3-0-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Neurocomputing and Neuroscience", "x": "The human brain, biological neurons, neural processing, biological neural network." },
+          { "t": "Artificial Neural Networks", "x": "Introduction, historical notes, neuron model, knowledge representation, comparison with biological neural network, applications." },
+          { "t": "Learning process", "x": "Supervised learning, unsupervised learning, error correction learning, competitive learning, adaptation learning, Statistical nature of the learning process." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Basic Models", "x": "McCulloch-Pitts neuron model, Hebb net, activation functions, aggregation functions." },
+          { "t": "Perceptron networks", "x": "Perceptron learning, single layer perceptron networks, multilayer perceptron networks." },
+          { "t": "Least Mean Square and Gradient Descent", "e": 1, "x": "Least mean square algorithm, gradient descent rule, nonlinearly separable problems and bench mark problems in NN." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Multilayer neural network", "x": "Introduction, comparison with single layer networks." },
+          { "t": "Back propagation network", "x": "Architecture, back propagation algorithm, local minima and global minima, heuristics for making back propagation algorithm performs better, applications." },
+          { "t": "Radial basis function network", "x": "Architecture, training algorithm, approximation properties of RBF networks, comparison of radial basis function network and back propagation networks." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Recurrent network", "x": "Introduction, architecture and types." },
+          { "t": "Self-organizing feature map", "x": "Introduction, determining winner, Kohonen Self Organizing feature maps (SOM) architecture, SOM algorithm, properties of feature map; Learning vector quantization-architecture and algorithm." },
+          { "t": "Principal and Independent Component Analysis", "e": 1, "x": "Principal component and independent component analysis." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Special networks", "x": "Cognitron, Support vector machines. Complex valued NN and complex valued BP." },
+          { "t": "Soft computing", "x": "Introduction, Overview of techniques, Hybrid soft computing techniques." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC043",
+      "name": "Internet of Things",
+      "type": "Elective",
+      "group": "Elective-4",
+      "ltp": "3-1-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Internet of Things (IoT)", "x": "Vision, Definition, Conceptual Framework, Architectural view, technology behind IoT, Sources of the IoT, M2M Communication, IoT Examples." },
+          { "t": "Design Principles for Connected Devices", "x": "IoT/M2M systems layers and design standardization, communication technologies, data enrichment and consolidation, ease of designing and affordability" }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Hardware for IoT", "x": "Sensors, Digital sensors, actuators, radio frequency identification (RFID) technology, wireless sensor networks, participatory sensing technology." },
+          { "t": "Embedded Platforms for IoT", "x": "Embedded computing basics, Overview of IOT supported Hardware platforms such as Arduino, NetArduino, Raspberry pi, Beagle Bone, Intel Galileo boards and ARM cortex." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Network & Communication aspects in IoT", "x": "Wireless Medium access issues, MAC protocol survey, Survey routing protocols, Sensor deployment & Node discovery, Data aggregation & dissemination" }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Programming the Ardunio", "x": "Ardunio Platform Boards Anatomy, Ardunio IDE, coding, using emulator, using libraries, additions in ardunio, programming the ardunio for IoT." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Challenges in IoT Design challenges", "x": "Development Challenges, Security Challenges, Other challenges" },
+          { "t": "IoT Applications", "x": "Smart Metering, E-health, City Automation, Automotive Applications, home automation, smart cards, communicating data with H/W units, mobiles, tablets, Designing of smart street lights in smart city." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC044",
+      "name": "Modern Application Development",
+      "type": "Elective",
+      "group": "Elective-4",
+      "ltp": "3-1-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Kotlin Fundamental", "x": "Introduction to Kotlin,Basic Syntax, Idioms, Coding Conventions, Basics, Basic Types, Packages, Control Flow, Returns and Jumps, Classes and Objects, Classes and Inheritance, Properties and Fields, Interfaces, Visibility Modifiers, Extensions, Data Classes, Generics, Nested Classes, Enum Classes, Objects, Delegation, Delegated Properties, Functions and Lambdas, Functions, Lambdas, Inline Functions, Higher-Order Functions, Scope Functions, Collections, Ranges, Type Checks and Casts, This expressions, Equality, Operator overloading, Null Safety, Exceptions, Annotations, Reflection." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Android Fundamental: Android Architecture", "x": "Introduction to Android, Layouts, Views and Resources, Activities and Intents, Activity Lifecycle and Saving State, Implicit or Explicit Intents." },
+          { "t": "User Interaction and Intuitive Navigation", "x": "Material Design, Theme, Style and Attributes, Input Controls, Menus, Widgets, Screen Navigation, Recycler View, ListView, Adapters,Drawables, Notifications." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Storing, Sharing and Retrieving Data in Android Applications", "x": "Overview to storing data, shared preferences, App settings, Store and query data in Android's SQLite database, Content Providers, Content Resolver, Loading data using loaders." },
+          { "t": "Jetpack Components", "x": "Fragments, Jetpack Navigation, Lifecycle, Lifecycle Observer, Lifecycle Owner, View Model, View Model Factory, View Model Provider, LiveData, Room API, Data Binding, View Binding, MVVM Architecture Basics" }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Asynchronous Data Handling, Networking and Files", "x": "Asynchronous Task, Coroutines, API Handling, JSON Parsing, Volley Library, Retrofit Library, File Handling, HTML and XML Parsing, Broadcast receivers, Services" }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Permissions, Performance and Security", "x": "Firebase, AdMob, APK Singing, Publish App, Packaging and deployment, Google Maps, GPS and Wi-Fi, Download Manager, Work Manager, Alarms, Location, Map and Sensors, APK Singing, Publish App" }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC045",
+      "name": "Distributed Database Systems",
+      "type": "Elective",
+      "group": "Elective-4",
+      "ltp": "4-0-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Introduction", "x": "Distributed Data Processing, Distributed Database System, Promises of DDBSs, Problem areas." },
+          { "t": "Distributed DBMS Architecture", "x": "Architectural Models for Distributed DBMS, DDMBS Architecture." },
+          { "t": "Distributed Database Design", "x": "Alternative Design Strategies, Distribution Design issues, Fragmentation, Allocation." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Query processing and decomposition", "x": "Query processing objectives, characterization of query processors, layers of query processing, query decomposition, localization of distributed data." },
+          { "t": "Distributed query Optimization", "x": "Query optimization, centralized query optimization, distributed query optimization algorithms." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Transaction Management", "x": "Definition, properties of transaction, types of transactions, distributed concurrency control: Serializability, concurrency control mechanisms & algorithms, time - stamped & optimistic concurrency control Algorithms, deadlock Management." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Distributed DBMS Reliability", "x": "Reliability concepts and measures, fault- tolerance in distributed systems, failures in Distributed DBMS, local & distributed reliability protocols, site failures and network partitioning." },
+          { "t": "Parallel Database Systems", "x": "Parallel database system architectures, parallel data placement, parallel query processing, load balancing, database clusters." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Distributed object Database Management Systems", "x": "Fundamental object concepts and models, object distributed design, architectural issues, object management, distributed object storage, object query Processing." },
+          { "t": "Object Oriented Data Model", "x": "Inheritance, object identity, persistent programming languages, persistence of objects, comparison OODBMS and ORDBMS" }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC051",
+      "name": "Mobile Computing",
+      "type": "Elective",
+      "group": "Elective-5",
+      "ltp": "3-0-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Introduction and Cellular Systems", "e": 1, "x": "Introduction, Issues in mobile computing, Overview of wireless telephony, Cellular concept, GSM- air interface, channel structure; Location management- HLR-VLR, hierarchical, handoffs; Channel allocation in cellular systems, CDMA, GPRS, MAC for cellular system." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Wireless Networking", "x": "Wireless Networking, Wireless LAN Overview- MAC issues, IEEE 802.11, Blue Tooth, Wireless multiple access protocols, TCP over wireless, Wireless applications, Data broadcasting, Mobile IP, WAP-architecture, protocol stack, application environment, applications." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Data Management in Mobile Computing", "e": 1, "x": "Data management issues in mobile computing, data replication for mobile computers, adaptive clustering for mobile wireless networks, File system, Disconnected operations." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Mobile Agents, Security and Transactions", "e": 1, "x": "Mobile Agents computing, Security and fault tolerance, Transaction processing in mobile computing environment." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Ad hoc Networks and Routing Protocols", "e": 1, "x": "Adhoc networks, Localization, MAC issues, Routing protocols, Global state routing (GSR), Destination sequenced distance vector routing (DSDV), Dynamic source routing (DSR), Adhoc on demand distance vector routing (AODV), Temporary ordered routing algorithm (TORA), QoS in Adhoc Networks, applications" }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC052",
+      "name": "Computer Graphics and Animation",
+      "type": "Elective",
+      "group": "Elective-5",
+      "ltp": "3-0-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Introduction and Line Generation", "x": "Types of computer graphics, Graphic Displays- Random scan displays, Raster scan displays, Frame buffer and video controller, Points and lines, Line drawing algorithms, Circle generating algorithms, Mid-point circle generating algorithm, and parallel version of these algorithms." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Transformations", "x": "Basic transformation, Matrix representations and homogenous coordinates, Composite transformations, Reflections and shearing." },
+          { "t": "Windowing and Clipping", "x": "Viewing pipeline, Viewing transformations, 2-D Clipping algorithms- Line clipping algorithms such as Cohen Sutherland line clipping algorithm, Liang Barsky algorithm, Line clipping against non rectangular clip windows; Polygon clipping – Sutherland Hodgeman polygon clipping, Weiler and Atherton polygon clipping, Curve clipping, Text clipping." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Three Dimensional", "x": "3-D Geometric Primitives, 3-D Object representation, 3-D Transformation, 3-D viewing, projections, 3-D Clipping." },
+          { "t": "Curves and Surfaces", "x": "Quadric surfaces, Spheres, Ellipsoid, Blobby objects, Introductory concepts of Spline, Bspline and Bezier curves and surfaces." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Hidden Lines and Surfaces", "x": "Back Face Detection algorithm, Depth buffer method, A- buffer method, Scan line method, basic illumination models– Ambient light, Diffuse reflection, Specular reflection and Phong model, Combined approach, Warn model, Intensity Attenuation, Color consideration, Transparency and Shadows." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Multimedia Systems", "x": "Design Fundamentals, Back ground of Art, Color theory overview, Sketching & illustration, Storyboarding, different tools for animation." },
+          { "t": "Animation", "x": "Principles of Animations, Elements of animation and their use, Power of Motion, Animation Techniques, Animation File Format, Making animation for Rolling Ball, making animation for a Bouncing Ball, Animation for the web, GIF, Plugins and Players, Animation tools for World Wide Web." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC053",
+      "name": "Natural Language Processing",
+      "type": "Elective",
+      "group": "Elective-5",
+      "ltp": "3-0-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Introduction to Natural Language Understanding", "x": "The study of Language, Applications of NLP, Evaluating Language Understanding Systems, Different levels of Language Analysis, Representations and Understanding, Organization of Natural language Understanding Systems, Linguistic Background: An outline of English syntax." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Semantics and Knowledge Representation", "e": 1, "x": "Introduction to semantics and knowledge representation, some applications like machine translation, database interface." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Grammars and Parsing", "x": "Grammars and sentence Structure, Top-Down and Bottom-Up Parsers, Transition Network Grammars, Top- Down Chart Parsing." },
+          { "t": "Feature Systems and Augmented Grammars", "x": "Basic Feature system for English, Morphological Analysis and the Lexicon, Parsing with Features, Augmented Transition Networks." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Grammars for Natural Language", "x": "Auxiliary Verbs and Verb Phrases, Movement Phenomenon in Language, Handling questions in Context-Free Grammars. Human preferences in Parsing, Encoding uncertainty, Deterministic Parser." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Ambiguity Resolution", "x": "Statistical Methods, Probabilistic Language Processing, Estimating Probabilities, Part-of Speech tagging, Obtaining Lexical Probabilities, Probabilistic Context-Free Grammars, Best First Parsing. Semantics and Logical Form, Word senses and Ambiguity, Encoding Ambiguity in Logical Form." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC054",
+      "name": "Machine Learning",
+      "type": "Elective",
+      "group": "Elective-5",
+      "ltp": "3-0-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Introduction", "x": "Learning, Types of Learning, Well defined learning problems, Designing a Learning System, History of ML, Introduction of Machine Learning Approaches – (Artificial Neural Network, Clustering, Reinforcement Learning, Decision Tree Learning, Bayesian networks, Support Vector Machine, Genetic Algorithm), Issues in Machine Learning and Data Science Vs Machine Learning;" }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Regression", "x": "Linear Regression and Logistic Regression" },
+          { "t": "Bayesian Learning", "x": "Bayes theorem, Concept learning, Bayes Optimal Classifier, Naïve Bayes classifier, Bayesian belief networks, EM algorithm." },
+          { "t": "Support Vector Machine", "x": "Introduction, Types of support vector kernel – (Linear kernel, polynomial kernel,and Gaussiankernel), Hyperplane – (Decision surface), Properties of SVM, and Issues in SVM." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Decision Tree Learning", "x": "Decision tree learning algorithm, Inductive bias, Inductive inference with decision trees, Entropy and information theory, Information gain, ID-3 Algorithm, Issues in Decision tree learning." },
+          { "t": "Instance-Based Learning", "x": "k-Nearest Neighbour Learning, Locally Weighted Regression, Radial basis function networks, Case-based learning." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Artificial Neural Networks", "x": "Perceptron's, Multilayer perceptron, Gradient descent and the Delta rule, Multilayer networks, Derivation of Backpropagation Algorithm, Generalization, Unsupervised Learning – SOM Algorithm and its variant;" },
+          { "t": "Deep Learning", "x": "Introduction,concept of convolutional neural network , Types of layers – (Convolutional Layers , Activation function , pooling , fully connected) , Concept of Convolution (1D and 2D) layers, Training of network, Case study of CNN for eg on Diabetic Retinopathy, Building a smart speaker, Self-deriving car etc." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Reinforcement Learning", "x": "Introduction to Reinforcement Learning , Learning Task,Example of Reinforcement Learning in Practice, Learning Models for Reinforcement – (Markov Decision process , Q Learning - Q Learning function, Q Learning Algorithm ), Application of Reinforcement Learning,Introduction to Deep Q Learning." },
+          { "t": "Genetic Algorithms", "x": "Introduction, Components, GA cycle of reproduction, Crossover, Mutation, Genetic Programming, Models of Evolution and Learning, Applications." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC055",
+      "name": "Quantum Computing",
+      "type": "Elective",
+      "group": "Elective-5",
+      "ltp": "3-0-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Fundamental Concepts", "x": "Global Perspectives, Quantum Bits, Quantum Computation, Quantum Algorithms, Quantum Information, Postulates of Quantum Mechanisms." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Quantum Computation", "x": "Quantum Circuits – Quantum algorithms, Single Orbit operations, Control Operations, Measurement, Universal Quantum Gates, Simulation of Quantum Systems, Quantum Fourier transform, Phase estimation, Applications, Quantum search algorithms – Quantum counting – Speeding up the solution of NP – complete problems – Quantum Search for an unstructured database." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Quantum Computers", "x": "Guiding Principles, Conditions for Quantum Computation, Harmonic Oscillator Quantum Computer, Optical Photon Quantum Computer – Optical cavity Quantum electrodynamics, Ion traps, Nuclear Magnetic resonance" }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Quantum Information", "x": "Quantum noise and Quantum Operations – Classical Noise and Markov Processes, Quantum Operations, Examples of Quantum noise and Quantum Operations – Applications of Quantum operations, Limitations of the Quantum operations formalism, Distance Measures for Quantum information." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Quantum Error Correction", "x": "Introduction, Shor code, Theory of Quantum Error – Correction, Constructing Quantum Codes, Stabilizer codes, Fault – Tolerant Quantum Computation, Entropy and information – Shannon Entropy, Basic properties of Entropy, Von Neumann, Strong Sub Additivity, Data Compression, Entanglement as a physical resource ." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC451",
+      "name": "Startup and Entrepreneurial Activity Assessment",
+      "type": "Project",
+      "ltp": "0-0-4",
+      "credits": 2,
+      "noSyllabus": true,
+      "note": "The PDF lists this only in the evaluation scheme: a startup/entrepreneurship activity of at least 60 hours undertaken up to Semester III and assessed in Semester IV. No unit-wise syllabus is published."
+    },
+    {
+      "code": "BMC452",
+      "name": "Project",
+      "type": "Project",
+      "ltp": "-",
+      "credits": 12,
+      "noSyllabus": true,
+      "note": "The PDF lists the Project only in the evaluation scheme (12 credits). No unit-wise syllabus is published."
+    }
+  ]
+}

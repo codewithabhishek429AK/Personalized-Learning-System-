@@ -1,0 +1,428 @@
+{
+  "semester": 3,
+  "title": "Semester 3",
+  "source": "AKTU MCA Second Year Evaluation Scheme & Syllabus, NEP 2020, effective 2025-26",
+  "subjects": [
+    {
+      "code": "BMC301",
+      "name": "Python Programming",
+      "type": "Theory",
+      "ltp": "3-0-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Introduction to Python", "x": "Introduction and Basics; Setting up path Python Data Variables & Operators: Data Variables and its types, id() and type() functions, Coding Standards," },
+          { "t": "Input-Output", "x": "Printing on screen, Reading data from keyboard;" },
+          { "t": "Control Structures", "x": "if-else, elif, Nested if, Iteration Control structures, Break, Continue & Pass." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "String Manipulation", "x": "Accessing Strings, Basic Operations, String slices, Function and Methods." },
+          { "t": "Lists", "x": "Introduction, Accessing list, Operations, Working with lists, Function and Methods." },
+          { "t": "Tuple", "x": "Introduction, accessing tuples, Operations, Working, Functions and Methods." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Dictionaries", "x": "Introduction, accessing values in dictionaries, Working with dictionaries, Properties, Functions." },
+          { "t": "Functions", "x": "Defining & Calling a function, Passing arguments to functions – Mutable & Immutable Data Types, Different types of arguments, Recursion, Scope of variables;" }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Modules and Packages", "x": "User-defined modules and Standard Library: random, numpy, scipy, sys, Math Module, String Module, List Module, Date & Time Module, Regular Expressions: match, search, replace;" },
+          { "t": "File Handling", "x": "Introduction, File Types, Creating, Opening, Closing, Renaming, Accessing and deleting files, File pointers, File Modes, Binary files." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Exception Handling", "x": "Exception, Exception Handling, Except clause, Try? finally clause, User Defined Exceptions." },
+          { "t": "Basics of Python for Data Analysis", "x": "Introduction to series and dataframes." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC302",
+      "name": "Software Engineering",
+      "type": "Theory",
+      "ltp": "4-0-0",
+      "credits": 4,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Introduction", "x": "Introduction to Software Engineering, Software Components, Software Characteristics, Software Crisis, Software Engineering Processes, Similarity and Differences from Conventional Engineering Processes, Software Quality Attributes." },
+          { "t": "Software Development Life Cycle (SDLC) Models", "x": "Water Fall Model, Prototype Model, Spiral Model, Evolutionary Development Models, Iterative Enhancement Models." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Software Requirement Specifications (SRS)", "x": "Requirement Engineering Process: Elicitation, Analysis, Documentation, Review and Management of User Needs, Feasibility Study, Information Modelling, Data Flow Diagrams, Entity Relationship Diagrams, Decision Tables, SRS Document, IEEE Standards for SRS." },
+          { "t": "Software Quality Assurance (SQA)", "x": "Verification and Validation, SQA Plans, Software Quality Frameworks, ISO 9000 Models, SEI-CMM Model." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Software Design", "x": "Basic Concept of Software Design, Architectural Design, Low Level Design: Modularization, Design Structure Charts, Pseudo Codes, Flow Charts, Coupling and Cohesion Measures, Design Strategies: Function Oriented Design, Object Oriented Design, Top-Down and Bottom-Up Design." },
+          { "t": "Software Measurement and Metrics", "x": "Various Size Oriented Measures: Halestead's Software Science, Function Point (FP) Based Measures, Cyclomatic Complexity Measures: Control Flow Graphs." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Software Testing", "x": "Testing Objectives, Unit Testing, Integration Testing, Acceptance Testing, Regression Testing, Testing for Functionality and Testing for Performance, Top Down and Bottom- Up Testing Strategies: Test Drivers and Test Stubs, Structural Testing (White Box Testing), Functional Testing (Black Box Testing), Test Data Suit Preparation, Alpha and Beta Testing of Products." },
+          { "t": "Static Testing Strategies", "x": "Formal Technical Reviews (Peer Reviews), Walk Through, Code Inspection, Compliance with Design and Coding Standards." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Software Maintenance and Software Project Management", "x": "Software as an Evolutionary Entity, Need for Maintenance, Categories of Maintenance: Preventive, Corrective and Perfective Maintenance, Cost of Maintenance, Software Re-Engineering, Reverse Engineering. Software Configuration Management Activities, Change Control Process, Software Version Control, An Overview of CASE Tools. Estimation of Various Parameters such as Cost, Efforts, Schedule/Duration, Constructive Cost Models (COCOMO), Resource Allocation Models, Software Risk Analysis and Management." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC303",
+      "name": "Computer Network",
+      "type": "Theory",
+      "ltp": "3-1-0",
+      "credits": 4,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Data Communications", "x": "Introduction: Data communication Components and characteristics, Data representation and Data flow." },
+          { "t": "Networks", "x": "LAN, WAN, MAN, Topologies." },
+          { "t": "Protocols and Standards", "x": "ISO-OSI model and TCP-IP Model." },
+          { "t": "Network Connecting Devices", "x": "HUB, Bridge, Switch, Router and Gateways." },
+          { "t": "Transmission Media", "x": "Guided and unguided Media" },
+          { "t": "Classification and Arrangement", "x": "Wired LANs and Wireless LANs" }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Error Detection and Error Correction", "x": "Data Link Layer: Types of errors, LRC, VRC, Checksum, CRC, and Hamming Code." },
+          { "t": "Flow Control and Error Control", "x": "Stop and Wait Protocol, Sliding Window, Go-back-N-ARQ Protocol and Selective-Repeat ARQ Protocol." },
+          { "t": "Channel Allocation Protocols", "x": "Random Access, Controlled and Channelization techniques such as ALOHA, CSMA, CSMA/CD, CDMA/CA, TDMA, FDMA, Token Passing, etc." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Switching Techniques", "x": "Network Layer: Circuit Switching, Packet Switching, and Message Switching." },
+          { "t": "Logical addressing", "x": "IPv4 and IPv6 Address schemes, Classes and subnetting" },
+          { "t": "Network Layer Protocols", "x": "ARP, RARP, BOOTP and DHCP" },
+          { "t": "Routing Techniques", "x": "Interdomain and Intradomain routing with examples." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Introduction to Transport Layer", "x": "Transport Layer: Process-to-Process Delivery: Reliable and unreliable Connection, Port and Socket Addressing" },
+          { "t": "Transport Layer Protocols with packet formats", "x": "User Datagram Protocol (UDP), Transmission Control Protocol (TCP), Stream Control Transmission Protocol (SCTP)." },
+          { "t": "Congestion Control", "x": "Techniques for handling the Congestion Control." },
+          { "t": "Quality of Service (QoS)", "x": "Flow Characteristics and techniques to improve QoS." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Basic Concept of Application Layer", "x": "Application Layer: Domain Name System, World Wide Web, Hyper Text Transfer Protocol, Electronic mail, File Transfer Protocol, Remote login." },
+          { "t": "Introduction to Cryptography", "x": "Definition, Goal, Applications, Attacks, Encryption, decryption, public-key and private key cryptography." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC351",
+      "name": "Python Programming Lab",
+      "type": "Practical",
+      "ltp": "0-0-3",
+      "credits": 2,
+      "units": [
+        { "no": "Lab", "topics": [
+          { "t": "Programs based on the concepts of: 1. Building Python Modules 2. Obtaining user Data 3. Printing desired output" },
+          { "t": "Programs based on the concepts of: 1. Conditional if statements 2. Nested if statements 3. Using else if and elif" },
+          { "t": "Programs based on the concepts of Iteration using different kinds of loops" },
+          { "t": "Usage of Data Structures: 1. Strings 2. Lists 3. Tuples 4. Sets 5. Dictionary" },
+          { "t": "Program based on the concepts of User-defined modules and Standard Library (random, numpy, scipy, sys, Math Module, String Module, List Module)." },
+          { "t": "Program based on Input Output." },
+          { "t": "Program based on exception Handling." },
+          { "t": "Program based on Simple Data Analysis" },
+          { "t": "Program based on Pandas." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC352",
+      "name": "Software Engineering Lab",
+      "type": "Practical",
+      "ltp": "0-0-3",
+      "credits": 2,
+      "units": [
+        { "no": "Lab", "topics": [
+          { "t": "Prepare a SRS document in line with the IEEE recommended standards." },
+          { "t": "Draw the use case diagram and specify the role of each of the actors." },
+          { "t": "Prepare state the precondition, post condition and function of each use case." },
+          { "t": "Draw the activity diagram." },
+          { "t": "Identify the classes. Classify them as weak and strong classes and draw the class diagram." },
+          { "t": "Draw the sequence diagram for any two scenarios." },
+          { "t": "Draw the collaboration diagram." },
+          { "t": "Draw the state chart diagram." },
+          { "t": "Draw the component diagram." },
+          { "t": "Draw the deployment diagram." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC353",
+      "name": "Mini Project",
+      "type": "Project",
+      "ltp": "0-0-4",
+      "credits": 2,
+      "noSyllabus": true,
+      "note": "The PDF lists this only in the evaluation scheme (mini project or internship of 5-6 weeks after Semester II, assessed in Semester III). No unit-wise syllabus is published."
+    },
+    {
+      "code": "BMC011",
+      "name": "Cryptography & Network Security",
+      "type": "Elective",
+      "group": "Elective-1",
+      "ltp": "3-0-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Security Attacks and Classical Encryption", "e": 1, "x": "Introduction to security attacks, Services and mechanism, Classical encryption techniques substitution ciphers and transposition ciphers, Cryptanalysis, Steganography, Stream and block ciphers." },
+          { "t": "Modern Block Ciphers", "x": "Block ciphers principles, Shannon's theory of confusion and diffusion, Feistel structure, Data encryption standard(DES), Strength of DES, Idea of differential cryptanalysis, Block cipher modes of operations, Triple DES" }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Finite Fields, Modular Arithmetic and AES", "e": 1, "x": "Introduction to group, field, finite field of the form GF(p), Modular arithmetic, Prime and relative prime numbers, Extended Euclidean Algorithm, Advanced Encryption Standard (AES)." },
+          { "t": "Number Theory and Public Key Cryptosystems", "e": 1, "x": "Fermat's and Euler's theorem, Primality testing, Chinese Remainder theorem, Discrete Logarithmic Problem, Principals of public key crypto systems, RSA algorithm, Security of RSA" }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Message Authentication Codes", "x": "Authentication requirements, Authentication functions, Message authentication code, Hash functions, Birthday attacks, Security of hash functions, Secure hash algorithm (SHA)." },
+          { "t": "Digital Signatures", "x": "Digital Signatures, Elgamal Digital Signature Techniques, Digital signature standards (DSS), Proof of digital signature algorithm." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Key Management and distribution", "x": "Symmetric key distribution, Diffie-Hellman Key Exchange, Public key distribution, X.509 Certificates, Public key Infrastructure." },
+          { "t": "Authentication Applications", "x": "Kerberos Electronic mail security: pretty good privacy (PGP), S/MIME." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "IP Security", "x": "Architecture, Authentication header, Encapsulating security payloads, Combining security associations, Key management." },
+          { "t": "Secure Socket Layer and SET", "e": 1, "x": "Introduction to Secure Socket Layer, Secure electronic transaction (SET)." },
+          { "t": "System Security", "x": "Introductory idea of Intrusion, Intrusion detection, Viruses and related threats, firewalls." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC012",
+      "name": "Data Warehousing & Data Mining",
+      "type": "Elective",
+      "group": "Elective-1",
+      "ltp": "4-0-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Data Warehousing", "x": "Overview, Definition, Data Warehousing Components, Building a Data Warehouse, Warehouse Database, Mapping the Data Warehouse to a Multiprocessor Architecture, Difference between Database System and Data Warehouse, Multi Dimensional Data Model, Data Cubes, Stars, Snow Flakes, Fact Constellations, Concept." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Data Warehouse Process and Technology", "x": "Warehousing Strategy, Warehouse /management and Support Processes, Warehouse Planning and Implementation, Hardware and Operating Systems for Data Warehousing, Client/Server Computing Model & Data Warehousing. Parallel Processors & Cluster Systems, Distributed DBMS implementations, Warehousing Software, Warehouse Schema Design" }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Data Mining", "x": "Overview, Motivation, Definition & Functionalities, Data Processing, Form of Data Pre-processing, Data Cleaning: Missing Values, Noisy Data, (Binning, Clustering, Regression, Computer and Human inspection), Inconsistent Data, Data Integration and Transformation. Data Reduction:-Data Cube Aggregation, Dimensionality reduction, Data Compression, Numerosity Reduction, Discretization and Concept hierarchy generation, Decision Tree" }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Classification", "x": "Definition, Data Generalization, Analytical Characterization, Analysis of attribute relevance, Mining Class comparisons, Statistical measures in large Databases, Statistical-Based Algorithms, Distance-Based Algorithms, Decision Tree-Based Algorithms." },
+          { "t": "Clustering", "x": "Introduction, Similarity and Distance Measures, Hierarchical and Partitional Algorithms. Hierarchical Clustering- CURE and Chameleon. Density Based Methods DBSCAN, OPTICS. Grid Based Methods- STING, CLIQUE. Model Based Method – Statistical Approach, Association rules: Introduction, Large Item sets, Basic Algorithms, Parallel and Distributed Algorithms, Neural Network approach." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Data Visualization and Overall Perspective", "x": "Aggregation, Historical information, Query Facility, OLAP function and Tools. OLAP Servers, ROLAP, MOLAP, HOLAP, Data Mining interface, Security, Backup and Recovery, Tuning Data Warehouse, Testing Data Warehouse." },
+          { "t": "Warehousing applications and Recent Trends", "x": "Types of Warehousing Applications, Web Mining, Spatial Mining and Temporal Mining." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC013",
+      "name": "Software Project Management",
+      "type": "Elective",
+      "group": "Elective-1",
+      "ltp": "3-0-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Project Evaluation and Project Planning", "x": "Importance of Software Project Management – Activities – Methodologies – Categorization of Software Projects – Setting objectives – Management Principles – Management Control – Project portfolio Management – Cost-benefit evaluation technology – Risk evaluation – Strategic program Management – Stepwise Project Planning." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Project Life Cycle and Effort Estimation", "x": "Software process and Process Models – Choice of Process models – Rapid Application development – Agile methods – Dynamic System Development Method – Extreme Programming– Managing interactive processes – Basics of Software estimation – Effort and Cost estimation techniques – COSMIC Full function points – COCOMO II – a Parametric Productivity Model." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Activity Planning and Risk Management", "x": "Objectives of Activity planning – Project schedules – Activities – Sequencing and scheduling – Network Planning models – Formulating Network Model – Forward Pass & Backward Pass techniques – Critical path (CRM) method – Risk identification – Assessment – Risk Planning –Risk Management – – PERT technique – Monte Carlo simulation – Resource Allocation – Creation of Critical paths – Cost schedules." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Project Management and Control", "x": "Framework for Management and control – Collection of data – Visualizing progress – Costmonitoring – Earned Value Analysis – Prioritizing Monitoring – Project tracking – Change control Software Configuration Management – Managing contracts – Contract Management." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Staffing in Software Projects", "x": "Managing people – Organizational behavior – Best methods of staff selection – Motivation – The Oldham – Hackman job characteristic model – Stress – Health and Safety – Ethical and Professional concerns – Working in teams – Decision making – Organizational structures – Dispersed and Virtual teams – Communications genres – Communication plans – Leadership." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC014",
+      "name": "Cloud Computing",
+      "type": "Elective",
+      "group": "Elective-1",
+      "ltp": "3-1-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Introduction", "x": "Cloud Computing – Definition of Cloud – Evolution of Cloud Computing – Underlying Principles of Parallel and Distributed, History of Cloud Computing - Cloud Architecture - Types of Clouds - Business models around Clouds – Major Players in Cloud Computing- issues in Clouds - Eucalyptus - Nimbus - Open Nebula, CloudSim." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Cloud Services", "x": "Types of Cloud services: Software as a Service- Platform as a Service –Infrastructure as a Service - Database as a Service - Monitoring as a Service –Communication as services. Service providers- Google, Amazon, Microsoft Azure, IBM, Sales force." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Collaborating Using Cloud Services", "x": "Email Communication over the Cloud - CRM Management – Project Management-Event Management - Task Management – Calendar - Schedules - Word Processing – Presentation – Spreadsheet - Databases – Desktop - Social Networks and Groupware." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Virtualization for Cloud", "x": "Need for Virtualization – Pros and cons of Virtualization – Types of Virtualization –System VM, Process VM, Virtual Machine monitor – Virtual machine properties - Interpretation and binary translation, HLL VM - supervisors – Xen, KVM, VMware, Virtual Box, Hyper-V." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Security, Standards and Applications", "x": "Security in Clouds: Cloud security challenges – Software as a Service Security, Common Standards: The Open Cloud Consortium – The Distributed management Task Force – Standards for application Developers – Standards for Messaging – Standards for Security, End user access to cloud computing, Mobile Internet devices and the cloud." },
+          { "t": "Hadoop and Google App Engine", "e": 1, "x": "Hadoop – MapReduce – Virtual Box — Google App Engine – Programming Environment for Google App Engine" }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC015",
+      "name": "Compiler Design",
+      "type": "Elective",
+      "group": "Elective-1",
+      "ltp": "3-0-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Introduction to Compiler", "x": "Phases and passes, Bootstrapping, Finite state machines and regular expressions and their applications to lexical analysis, Optimization of DFA-Based Pattern Matchers implementation of lexical analyzers, lexical-analyzer generator, LEX compiler, Formal grammars and their application to syntax analysis, BNF notation, ambiguity, YACC." },
+          { "t": "The syntactic specification of programming languages", "x": "Context free grammars, derivation and parse trees, capabilities of CFG." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Basic Parsing Techniques", "x": "Parsers, Shift reduce parsing, operator precedence parsing, top down parsing, predictive parsers" },
+          { "t": "Automatic Construction of efficient Parsers", "x": "LR parsers, the canonical Collection of LR(0) items, constructing SLR parsing tables, constructing Canonical LR parsing tables, Constructing LALR parsing tables, using ambiguous grammars, an automatic parser generator, implementation of LR parsing tables." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Syntax-directed Translation", "x": "Syntax-directed Translation schemes, Implementation of Syntax-directed Translators, Intermediate code, postfix notation, Parse trees & syntax trees, three address code, quadruple & triples, translation of assignment statements, Boolean expressions, statements that alter the flow of control, postfix translation, translation with a top down parser." },
+          { "t": "More about translation", "x": "Array references in arithmetic expressions, procedures call, declarations and case statements." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Symbol Tables", "x": "Data structure for symbols tables, representing scope information." },
+          { "t": "Run-Time Administration", "x": "Implementation of simple stack allocation scheme, storage allocation in block structured language." },
+          { "t": "Error Detection & Recovery", "x": "Lexical Phase errors, syntactic phase errors semantic errors." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Code Generation", "x": "Design Issues, the Target Language. Addresses in the Target Code, Basic Blocks and Flow Graphs, Optimization of Basic Blocks, Code Generator." },
+          { "t": "Code optimization", "x": "Machine-Independent Optimizations, Loop optimization, DAG representation of basic blocks, value numbers and algebraic laws, Global Data-Flow analysis." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC021",
+      "name": "Artificial Intelligence",
+      "type": "Elective",
+      "group": "Elective-2",
+      "ltp": "3-0-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Artificial Intelligence", "x": "Introduction to artificial intelligence, Historical development and foundation areas of artificial intelligence, Tasks and application areas of artificial intelligence. Introduction, types and structure of intelligent agents, Computer Vision, Natural language processing." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Searching Techniques", "x": "Introduction, Problem solving by searching, Searching for solutions, Uniformed searching techniques, Informed searching techniques, Local search algorithms, Adversarial search methods, Search techniques used in games, Alpha-Beta pruning." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Knowledge Representation and Reasoning", "x": "Propositional logic, Predicate logic, First order logic, Inference in first order logic, Clause form conversion, Resolution. Chaining- concept, forward chaining and backward chaining, Utility theory and Probabilistic reasoning, Hidden Markov model, Bayesian networks." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Machine Learning", "x": "Introduction, types and application areas, Decision trees, Statistical learning methods, Learning with complete data - concept and Naïve Bayes models, Learning with hidden data- concept and EM algorithm, Reinforcement learning." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Pattern Recognition", "x": "Introduction and design principles, Statistical pattern recognition, Parameter estimation methods - Principle component analysis and Linear discrimination analysis, Classification techniques - Nearest neighbor rule and Bayes classifier, K-means clustering, Support vector machine." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC022",
+      "name": "Big Data",
+      "type": "Elective",
+      "group": "Elective-2",
+      "ltp": "4-0-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Introduction to Big Data", "x": "Types of digital data, history of Big Data innovation, introduction to Big Data platform, drivers for Big Data, Big Data architecture and characteristics, 5 Vs of Big Data, Big Data technology components, Big Data importance and applications, Big Data features – security, compliance, auditing and protection, Big Data privacy and ethics, Big Data Analytics, Challenges of conventional systems, intelligent data analysis, nature of data, analytic processes and tools, analysis vs reporting, modern data analytic tools." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Hadoop", "x": "History of Hadoop, Apache Hadoop, the Hadoop Distributed File System, components of Hadoop, data format, analyzing data with Hadoop, scaling out, Hadoop streaming, Hadoop pipes, Hadoop Echo System." },
+          { "t": "Map-Reduce", "x": "Map-Reduce framework and basics, how Map Reduce works, developing a Map Reduce application, unit tests with MR unit, test data and local tests, anatomy of a Map Reduce job run, failures, job scheduling, shuffle and sort, task execution, Map Reduce types, input formats, output formats, Map Reduce features, Real-world Map Reduce" }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "HDFS (Hadoop Distributed File System)", "x": "Design of HDFS, HDFS concepts, benefits and challenges, file sizes, block sizes and block abstraction in HDFS, data replication, how does HDFS store, read, and write files, Java interfaces to HDFS, command line interface, Hadoop file system interfaces, data flow, data ingest with Flume and Scoop, Hadoop archives, Hadoop I/O: Compression, serialization, Avro and file-based data structures." },
+          { "t": "Hadoop Environment", "x": "Setting up a Hadoop cluster, cluster specification, cluster setup and installation, Hadoop configuration, security in Hadoop, administering Hadoop, HDFS monitoring & maintenance, Hadoop benchmarks, Hadoop in the cloud" }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Hadoop Eco System and YARN", "x": "Hadoop ecosystem components, schedulers, fair and capacity, Hadoop 2.0 New Features – Name Node high availability, HDFS federation, MRv2, YARN, Running MRv1 in YARN." },
+          { "t": "NoSQL Databases", "x": "Introduction to NoSQL MongoDB: Introduction, data types, creating, updating and deleing documents, querying, introduction to indexing, capped collections" },
+          { "t": "Spark", "x": "Installing spark, spark applications, jobs, stages and tasks, Resilient Distributed Databases, anatomy of a Spark job run, Spark on YARN" },
+          { "t": "SCALA", "x": "Introduction, classes and objects, basic types and operators, built-in control structures, functions and closures, inheritance." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Hadoop Eco System Frameworks", "x": "Applications on Big Data using Pig, Hive and HBase" },
+          { "t": "Pig", "x": "Introduction to PIG, Execution Modes of Pig, Comparison of Pig with Databases, Grunt, Pig Latin, User Defined Functions, Data Processing operators," },
+          { "t": "Hive", "x": "Apache Hive architecture and installation, Hive shell, Hive services, Hive metastore, comparison with traditional databases, HiveQL, tables, querying data and user defined functions, sorting and aggregating, Map Reduce scripts, joins & subqueries." },
+          { "t": "HBase", "x": "Hbase concepts, clients, example, Hbase vs RDBMS, advanced usage, schema design, advance indexing, Zookeeper – how it helps in monitoring a cluster, how to build applications with Zookeeper. IBM Big Data strategy, introduction to Infosphere, BigInsights and Big Sheets, introduction to Big SQL." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC023",
+      "name": "Simulation & Modeling",
+      "type": "Elective",
+      "group": "Elective-2",
+      "ltp": "3-1-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "System Definition and Modeling", "e": 1, "x": "System definition and components, stochastic activities, continuous and discrete systems, System modeling, Types of models, static and dynamic physical models, static and dynamic mathematical models, full corporate model, types of system study." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "System Simulation", "e": 1, "x": "System simulation, Need of simulation, Basic nature of simulation, techniques of simulation, comparison of simulation and analytical methods, types of system Simulation, real time simulation, hybrid simulation, simulation of pursuit problem, single-server queuing system and an inventory problem, Monte-Carlo simulation, Distributed Lag model, Cobweb model." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Simulation of Continuous and Discrete Systems", "e": 1, "x": "Simulation of continuous Systems, analog vs digital simulation, simulation of water reservoir system, simulation of a servo system, simulation of an auto-pilot. Discrete system simulation, fixed time step vs. event-to-event model, generation of random numbers, test of randomness, Monte-Carlo computation vs. stochastic simulation." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "System Dynamics", "e": 1, "x": "System dynamics, exponential growth models, exponential decay models, logistic curves, system dynamics diagrams, world model." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Simulation of PERT Networks and Simulation Languages", "e": 1, "x": "Simulation of PERT networks, critical path computation, uncertainties in activity duration, resource allocation and consideration, Simulation languages, object oriented simulation" }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC024",
+      "name": "Software Testing & Quality Assurance",
+      "type": "Elective",
+      "group": "Elective-2",
+      "ltp": "3-0-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Software Testing Basics", "x": "Testing as an engineering activity, Role of process in software quality, Testing as a process, Basic definitions, Software testing principles, The tester's role in a software development organization, Origins of defects, Defect classes, The defect repository and test design, Defect examples, Developer / Tester support for developing a defect repository." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Testing Techniques and Levels of Testing", "x": "Using White Box Approach to Test design– Static Testing Vs. Structural Testing, Code Functional Testing, Coverage and Control Flow Graphs, Using Black Box Approaches to Test Case Design, Random Testing, Requirements based testing, Decision tables, State-based testing, Cause-effect graphing, Error guessing, Compatibility testing, Levels of Testing -Unit Testing, Integration Testing, Defect Bash Elimination. System Testing - Usability and Accessibility Testing, Configuration Testing, Compatibility Testing." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Software Test Automation And Quality Metrics", "x": "Software Test Automation, Skills needed for Automation, Scope of Automation, Design and Architecture for Automation, Requirements for a Test Tool, Challenges in Automation Tracking the Bug, Debugging. Testing Software System Security - Six-Sigma, TQM - Complexity Metrics and Models, Quality Management Metrics, Availability Metrics, Defect Removal Effectiveness, FMEA, Quality Function Deployment, Taguchi Quality Loss Function, Cost of Quality." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Fundamentals of Software Quality Assurance", "x": "SQA basics, Components of the Software Quality Assurance System, software quality in business context, planning for software quality assurance, product quality and process quality, software process models, 7 QC Tools and Modern Tools." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Software Assurance Models", "x": "Models for Quality Assurance, ISO-9000 series, CMM, CMMI, Test Maturity Models, SPICE, Malcolm Baldrige Model- P-CMM." },
+          { "t": "Software Quality Assurance Trends", "x": "Software Process- PSP and TSP, OO Methodology, Clean room software engineering, Defect Injection and prevention, Internal Auditing and Assessments, Inspections & Walkthroughs, Case Tools and their affect on Software Quality." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC025",
+      "name": "Digital Image Processing",
+      "type": "Elective",
+      "group": "Elective-2",
+      "ltp": "3-0-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Digital Image Fundamentals", "x": "Steps in Digital Image Processing – Components – Elements of Visual Perception – Image Sensing and Acquisition – Image Sampling and Quantization – Relationships between pixels – Color image fundamentals – RGB, HSI models, Two-dimensional mathematical preliminaries, 2D transforms – DFT, DCT." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Image Enhancement", "x": "Spatial Domain: Gray level transformations – Histogram processing – Basics of Spatial Filtering–Smoothing and Sharpening Spatial Filtering, Frequency Domain: Introduction to Fourier Transform– Smoothing and Sharpening frequency domain filters – Ideal, Butterworth and Gaussian filters, Homomorphic filtering, Color image enhancement." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Image Restoration", "x": "Image Restoration – degradation model, Properties, Noise models – Mean Filters – Order Statistics –Adaptive filters – Band reject Filters – Band pass Filters – Notch Filters – Optimum Notch Filtering – Inverse Filtering – Wiener filtering" }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Image Segmentation", "x": "Edge detection, Edge linking via Hough transform – Thresholding – Region based segmentation – Region growing – Region splitting and merging – Morphological processing- erosion and dilation, Segmentation by morphological watersheds – basic concepts – Dam construction – Watershed segmentation algorithm." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Image Compression and Recognition", "x": "Need for data compression, Huffman, Run Length Encoding, Shift codes, Arithmetic coding, JPEG standard, MPEG. Boundary representation, Boundary description, Fourier Descriptor, Regional Descriptors – Topological feature, Texture – Patterns and Pattern classes – Recognition based on matching." }
+        ] }
+      ]
+    }
+  ]
+}

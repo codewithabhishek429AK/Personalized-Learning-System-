@@ -1,210 +1,192 @@
-
 import { useState } from "react";
-import courseData from "../Data/subjects";
+import { Link } from "react-router-dom";
+
+import Logo from "./Logo";
+import CurriculumExplorer from "./CurriculumExplorer";
+import useLearningData from "../hooks/useLearningData";
+import useSelection from "../hooks/useSelection";
+import {
+  semesters,
+  allSubjects,
+  curriculumTotals,
+  electiveGroups,
+  getSubject,
+  getTopic,
+  subjectsInScope,
+} from "../Data/mca";
+
+function ProgressBar({ value, color = "#6840D9", height = "h-2" }) {
+  return (
+    <div
+      className={`${height} overflow-hidden rounded-full bg-[#EEEAF8]`}
+      role="progressbar"
+      aria-valuenow={value}
+      aria-valuemin={0}
+      aria-valuemax={100}
+    >
+      <div
+        className="h-full rounded-full transition-all duration-500"
+        style={{ width: `${value}%`, backgroundColor: color }}
+      />
+    </div>
+  );
+}
+
+const percent = (done, total) =>
+  total ? Math.min(100, Math.round((done / total) * 100)) : 0;
 
 export default function StudentDashboard({
-  studentName = "Abhishek",
+  studentName = "Student",
   onLogout,
-  onOpenSubject,
 }) {
   const [activeMenu, setActiveMenu] = useState("Dashboard");
 
-  // Read saved learning progress
-  const [completedBySubject] = useState(() => {
-    try {
-      const savedProgress = localStorage.getItem("learncraft-progress");
-      return savedProgress ? JSON.parse(savedProgress) : {};
-    } catch {
-      return {};
-    }
-  });
+  // Real data from MongoDB
+  const { completedBySubject, recentTopics, quizResults, isLoading, error } =
+    useLearningData();
+
+  // Saved regular-subject selection and elective choices (MongoDB)
+  const selection = useSelection();
 
   const menuItems = [
-    { name: "Dashboard", icon: "⌂" },
-    { name: "My Courses", icon: "▤" },
-    { name: "My Progress", icon: "▥" },
-    { name: "My Profile", icon: "◎" },
+    { name: "Dashboard", icon: "⌂", target: null },
+    { name: "My Courses", icon: "▤", target: "my-courses" },
+    { name: "My Progress", icon: "▥", target: "my-progress" },
+    { name: "My Profile", icon: "◎", target: "my-profile" },
   ];
 
-  // Subject colors and icons
-  const subjectStyles = {
-    DBMS: {
-      shortName: "DBMS",
-      color: "#3B0CA3",
-      icon: "▤",
-    },
-    "Operating Systems": {
-      shortName: "OS",
-      color: "#2563EB",
-      icon: "⚙",
-    },
-    "Data Structures": {
-      shortName: "DSA",
-      color: "#7C3AED",
-      icon: "⌘",
-    },
-    "Web Technology": {
-      shortName: "WT",
-      color: "#0D9488",
-      icon: "◇",
-    },
+  const handleMenuClick = (menu) => {
+    setActiveMenu(menu.name);
+
+    if (!menu.target) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      document.getElementById(menu.target)?.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
   };
 
-  // Calculate actual subject progress
-  const subjects = courseData.map((course) => {
-    const completedTopics = completedBySubject[String(course.id)] || [];
-    const totalTopics = course.topics?.length || 0;
-    const completedCount = completedTopics.length;
+  const completedCount = (code) => completedBySubject[code]?.size || 0;
 
-    const progress = totalTopics
-      ? Math.min(
-          100,
-          Math.round((completedCount / totalTopics) * 100)
-        )
-      : 0;
+  // Progress is measured on the student's own path: every regular subject plus
+  // the option chosen in each elective group. Topics completed in an elective
+  // that is no longer chosen stay saved, but are not counted here.
+  const scope = subjectsInScope(selection.electiveChoices);
+  const scopeTopics = scope.reduce((sum, subject) => sum + subject.topicCount, 0);
 
-    const style = subjectStyles[course.name] || {
-      shortName: course.name,
-      color: "#6840D9",
-      icon: "▤",
-    };
-
-    return {
-      id: course.id,
-      name:
-        course.name === "DBMS"
-          ? "Database Management System"
-          : course.name,
-      shortName: style.shortName,
-      description: course.description,
-      progress,
-      color: style.color,
-      icon: style.icon,
-      completedCount,
-      totalTopics,
-      topics: `${completedCount} / ${totalTopics} Topics`,
-    };
-  });
-
-  // Overall completed topics
-  const completedTopicCount = Object.values(
-    completedBySubject
-  ).reduce((total, topics) => {
-    return total + (Array.isArray(topics) ? topics.length : 0);
-  }, 0);
-
-  const totalTopics = courseData.reduce(
-    (total, subject) => total + (subject.topics?.length || 0),
+  const totalCompleted = scope.reduce(
+    (sum, subject) => sum + completedCount(subject.code),
     0
   );
 
-  const overallProgress = totalTopics
-    ? Math.min(
-        100,
-        Math.round((completedTopicCount / totalTopics) * 100)
-      )
-    : 0;
+  const overallProgress = percent(totalCompleted, scopeTopics);
 
-  // Demo activities until activity tracking is implemented
-  const activities = [
-    {
-      title: "Completed SQL Joins",
-      subject: "Database Management System",
-      time: "Today",
-      icon: "✓",
-    },
-    {
-      title: "Attempted Operating Systems Quiz",
-      subject: "Operating Systems",
-      time: "Yesterday",
-      icon: "✎",
-    },
-    {
-      title: "Studied Linked Lists",
-      subject: "Data Structures",
-      time: "2 days ago",
-      icon: "▤",
-    },
-  ];
+  const regularTotal = semesters.reduce(
+    (sum, semester) => sum + semester.regularSubjects.length,
+    0
+  );
+
+  const chosenElectives = electiveGroups.filter(
+    (group) => selection.electiveChoices[group.id]
+  ).length;
+
+  // Semester-wise progress (regular subjects + chosen electives of that semester)
+  const semesterStats = semesters.map((semester) => {
+    const inScope = scope.filter((subject) => subject.semester === semester.number);
+
+    const topics = inScope.reduce((sum, subject) => sum + subject.topicCount, 0);
+
+    const done = inScope.reduce(
+      (sum, subject) => sum + completedCount(subject.code),
+      0
+    );
+
+    return {
+      number: semester.number,
+      title: semester.title,
+      regular: semester.regularSubjects.length,
+      groups: semester.electiveGroups.length,
+      groupsChosen: semester.electiveGroups.filter(
+        (group) => selection.electiveChoices[group.id]
+      ).length,
+      topics,
+      done,
+      progress: percent(done, topics),
+    };
+  });
+
+  // Subjects the student has actually started (real progress only)
+  const startedSubjects = allSubjects
+    .filter((subject) => completedCount(subject.code) > 0)
+    .map((subject) => ({
+      subject,
+      done: completedCount(subject.code),
+      progress: percent(completedCount(subject.code), subject.topicCount),
+      inactiveElective:
+        Boolean(subject.group) &&
+        selection.electiveChoices[subject.group] !== subject.code,
+    }));
 
   const stats = [
     {
-      title: "Enrolled Subjects",
-      value: String(subjects.length).padStart(2, "0"),
-      subtitle: "Your learning subjects",
+      title: "Total Subjects",
+      value: String(curriculumTotals.subjects),
+      subtitle: `${regularTotal} regular + ${electiveGroups.length} elective groups × 5 options`,
       icon: "▤",
     },
     {
+      title: "Selected Subjects",
+      value: String(selection.selected.length + chosenElectives),
+      subtitle: `${selection.selected.length} regular · ${chosenElectives}/${electiveGroups.length} electives chosen`,
+      icon: "◎",
+    },
+    {
       title: "Completed Topics",
-      value: String(completedTopicCount),
-      subtitle: "Keep learning!",
+      value: String(totalCompleted),
+      subtitle: `of ${scopeTopics} topics on your path`,
       icon: "✓",
     },
     {
       title: "Overall Progress",
       value: `${overallProgress}%`,
-      subtitle: "Your learning progress",
-      icon: "◎",
-    },
-    {
-      title: "Learning Hours",
-      value: "32",
-      subtitle: "Demo study time",
-      icon: "◷",
+      subtitle: "Regular subjects + your chosen electives",
+      icon: "▥",
     },
   ];
 
-  // Sidebar navigation
-  const handleMenuClick = (menu) => {
-    setActiveMenu(menu);
+  const recentQuizzes = quizResults.slice(0, 5).map((result) => {
+    const found = getTopic(result.subjectId, result.topicId);
 
-    if (menu === "Dashboard") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else if (menu === "My Courses") {
-      document.getElementById("my-courses")?.scrollIntoView({
-        behavior: "smooth",
-      });
-    } else if (menu === "My Progress") {
-      document.getElementById("my-progress")?.scrollIntoView({
-        behavior: "smooth",
-      });
-    } else if (menu === "My Profile") {
-      document.getElementById("my-profile")?.scrollIntoView({
-        behavior: "smooth",
-      });
-    }
-  };
+    return {
+      id: result._id,
+      topic: found?.topic.title || result.topicId,
+      subject: found?.subject.name || getSubject(result.subjectId)?.name || result.subjectId,
+      score: result.score,
+      total: result.totalQuestions,
+      percentage: result.percentage,
+      date: new Date(result.completedAt).toLocaleDateString(),
+    };
+  });
 
   return (
     <div className="min-h-screen bg-[#F5F6FC] text-[#010737]">
       <div className="flex min-h-screen">
-
         {/* SIDEBAR */}
         <aside className="hidden w-64 shrink-0 flex-col border-r border-[#E5E2F5] bg-white px-5 py-7 md:flex">
-
-          {/* LOGO */}
-          <div className="mb-12 flex items-center gap-3 px-2">
-            <img
-              src="/Images/LearnCraft-Logo.png"
-              alt="LearnCraft Logo"
-              className="h-11 w-11 object-contain"
-            />
-
-            <span className="text-2xl font-extrabold text-[#3B0CA3]">
-              LearnCraft
-            </span>
+          <div className="mb-12 px-2">
+            <Logo size={44} to="/dashboard" />
           </div>
 
           <p className="mb-4 px-3 text-xs font-bold uppercase tracking-widest text-[#9294AE]">
             Learning Menu
           </p>
 
-          {/* MENU ITEMS */}
           <nav className="flex flex-col gap-2">
             {menuItems.map((item) => (
               <button
                 key={item.name}
-                onClick={() => handleMenuClick(item.name)}
+                onClick={() => handleMenuClick(item)}
                 className={`flex items-center gap-4 rounded-xl px-4 py-3 text-left font-semibold transition ${
                   activeMenu === item.name
                     ? "bg-gradient-to-r from-[#3B0CA3] to-[#6840D9] text-white shadow-lg shadow-[#6840D9]/20"
@@ -217,18 +199,7 @@ export default function StudentDashboard({
             ))}
           </nav>
 
-          {/* BOTTOM SIDEBAR */}
           <div className="mt-auto">
-            <div className="mb-5 rounded-2xl bg-gradient-to-br from-[#F0EDFF] to-[#E7EFFF] p-4">
-              <p className="font-bold text-[#3B0CA3]">
-                Keep Growing!
-              </p>
-
-              <p className="mt-2 text-sm leading-6 text-[#555B7D]">
-                Small daily progress leads to big achievements.
-              </p>
-            </div>
-
             <button
               onClick={onLogout}
               className="flex w-full items-center gap-3 rounded-xl px-4 py-3 font-semibold text-red-500 transition hover:bg-red-50"
@@ -240,23 +211,11 @@ export default function StudentDashboard({
         </aside>
 
         {/* MAIN CONTENT */}
-        <main className="min-w-0 flex-1 px-5 py-7 md:px-9 lg:px-12">
-
+        <main className="min-w-0 flex-1 px-4 py-6 sm:px-5 md:px-9 lg:px-12">
           {/* TOP NAVBAR */}
-          <header className="mb-9 flex flex-wrap items-center justify-between gap-4">
-
+          <header className="mb-8 flex flex-wrap items-center justify-between gap-4">
             <div className="md:hidden">
-              <div className="flex items-center gap-2">
-                <img
-                  src="/Images/LearnCraft-Logo.png"
-                  alt="LearnCraft Logo"
-                  className="h-9 w-9 object-contain"
-                />
-
-                <span className="text-xl font-extrabold text-[#3B0CA3]">
-                  LearnCraft
-                </span>
-              </div>
+              <Logo size={36} to="/dashboard" />
             </div>
 
             <div className="hidden md:block">
@@ -264,9 +223,7 @@ export default function StudentDashboard({
                 Learning Workspace
               </p>
 
-              <h2 className="mt-1 text-2xl font-extrabold">
-                Student Dashboard
-              </h2>
+              <h2 className="mt-1 text-2xl font-extrabold">Student Dashboard</h2>
             </div>
 
             <div className="ml-auto flex items-center gap-3">
@@ -280,19 +237,21 @@ export default function StudentDashboard({
                   <p className="text-xs text-[#8588A5]">Student</p>
                 </div>
               </div>
+
+              <button
+                onClick={onLogout}
+                className="rounded-xl border border-red-200 bg-white px-3 py-2 text-sm font-semibold text-red-500 transition hover:bg-red-50 md:hidden"
+              >
+                Logout
+              </button>
             </div>
           </header>
 
           {/* WELCOME BANNER */}
-          <section className="relative mb-9 overflow-hidden rounded-3xl bg-gradient-to-r from-[#1237D5] via-[#2928C7] to-[#6416C8] p-7 text-white shadow-xl shadow-[#6840D9]/15 md:p-10">
-
-            <div className="absolute -right-10 -top-20 h-64 w-64 rounded-full bg-white/10 blur-2xl" />
-
-            <div className="absolute -bottom-28 right-1/3 h-64 w-64 rounded-full bg-[#AFA0FF]/20 blur-3xl" />
-
+          <section className="relative mb-8 overflow-hidden rounded-3xl bg-gradient-to-r from-[#1237D5] via-[#2928C7] to-[#6416C8] p-6 text-white shadow-xl shadow-[#6840D9]/15 md:p-10">
             <div className="relative z-10 max-w-2xl">
               <p className="text-sm font-semibold uppercase tracking-widest text-white/70">
-                Welcome Back!
+                MCA · AKTU · NEP 2020
               </p>
 
               <h1 className="mt-3 text-3xl font-extrabold md:text-4xl">
@@ -300,8 +259,9 @@ export default function StudentDashboard({
               </h1>
 
               <p className="mt-4 max-w-xl leading-7 text-white/80">
-                Ready to continue your learning journey?
-                Keep improving your skills and achieve your academic goals.
+                Choose your subjects from Semester 1 to 4, study each topic
+                with a step-by-step lesson and test yourself with a Practice
+                Quiz.
               </p>
 
               <button
@@ -310,22 +270,31 @@ export default function StudentDashboard({
                     behavior: "smooth",
                   })
                 }
-                className="mt-7 rounded-xl bg-white px-6 py-3 font-bold text-[#3B0CA3] shadow-lg transition hover:-translate-y-1"
+                className="mt-6 rounded-xl bg-white px-6 py-3 font-bold text-[#3B0CA3] shadow-lg transition hover:-translate-y-1"
               >
-                Continue Learning →
+                Browse Subjects →
               </button>
             </div>
           </section>
 
+          {error && (
+            <div
+              role="alert"
+              className="mb-6 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+            >
+              {error} Progress numbers below may be incomplete.
+            </div>
+          )}
+
           {/* STATISTICS */}
           <section className="mb-10">
             <div className="mb-5">
-              <h2 className="text-xl font-extrabold">
-                Your Learning Overview
-              </h2>
+              <h2 className="text-xl font-extrabold">Your Learning Overview</h2>
 
               <p className="mt-1 text-sm text-[#8588A5]">
-                A quick look at your learning activities.
+                {isLoading
+                  ? "Loading your progress..."
+                  : "Numbers come from your saved progress."}
               </p>
             </div>
 
@@ -333,7 +302,7 @@ export default function StudentDashboard({
               {stats.map((stat) => (
                 <div
                   key={stat.title}
-                  className="rounded-2xl border border-[#E5E2F5] bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                  className="rounded-2xl border border-[#E5E2F5] bg-white p-5 shadow-sm"
                 >
                   <div className="flex items-center justify-between">
                     <p className="text-sm font-semibold text-[#777B99]">
@@ -349,100 +318,66 @@ export default function StudentDashboard({
                     {stat.value}
                   </h3>
 
+                  <p className="mt-2 text-xs text-[#9294AE]">{stat.subtitle}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* SEMESTER CARDS */}
+          <section className="mb-10" aria-label="Semesters">
+            <h2 className="mb-5 text-xl font-extrabold">MCA Semesters</h2>
+
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+              {semesterStats.map((semester) => (
+                <div
+                  key={semester.number}
+                  className="rounded-2xl border border-[#E5E2F5] bg-white p-5 shadow-sm"
+                >
+                  <h3 className="text-lg font-extrabold text-[#3B0CA3]">
+                    {semester.title}
+                  </h3>
+
+                  <p className="mt-1 text-xs text-[#555B7D]">
+                    {semester.regular} regular subjects
+                    {semester.groups > 0 &&
+                      ` + ${semester.groupsChosen}/${semester.groups} electives chosen`}
+                  </p>
+
+                  <div className="mt-4 flex justify-between text-sm">
+                    <span className="font-semibold text-[#555B7D]">Progress</span>
+                    <span className="font-extrabold text-[#3B0CA3]">
+                      {semester.progress}%
+                    </span>
+                  </div>
+
+                  <div className="mt-2">
+                    <ProgressBar value={semester.progress} />
+                  </div>
+
                   <p className="mt-2 text-xs text-[#9294AE]">
-                    {stat.subtitle}
+                    {semester.done} / {semester.topics} topics completed
                   </p>
                 </div>
               ))}
             </div>
           </section>
 
-          {/* COURSES */}
+          {/* COURSES: SELECTION + TREE */}
           <section id="my-courses" className="mb-10 scroll-mt-8">
-            <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
-              <div>
-                <h2 className="text-xl font-extrabold">
-                  My Courses
-                </h2>
+            <div className="mb-5">
+              <h2 className="text-xl font-extrabold">My Courses</h2>
 
-                <p className="mt-1 text-sm text-[#8588A5]">
-                  Continue learning your enrolled subjects.
-                </p>
-              </div>
-
-              <span className="text-sm font-bold text-[#6840D9]">
-                {subjects.length.toString().padStart(2, "0")} Subjects
-              </span>
+              <p className="mt-1 text-sm text-[#8588A5]">
+                Tick regular subjects to select them and pick one option in each elective group. Click a name to see its units and
+                topics, or use Open to go to the subject page.
+              </p>
             </div>
 
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-2">
-              {subjects.map((subject) => (
-                <div
-                  key={subject.shortName}
-                  className="rounded-2xl border border-[#E5E2F5] bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
-                >
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#F0EDFF] text-xl font-extrabold text-[#3B0CA3]">
-                      {subject.shortName}
-                    </div>
-
-                    <span className="rounded-full bg-[#F0EDFF] px-3 py-1 text-xs font-bold text-[#6840D9]">
-                      {subject.progress === 100
-                        ? "Completed"
-                        : subject.completedCount > 0
-                          ? "In Progress"
-                          : "Not Started"}
-                    </span>
-                  </div>
-
-                  <h3 className="mt-5 text-lg font-extrabold">
-                    {subject.name}
-                  </h3>
-
-                  <p className="mt-2 min-h-12 text-sm leading-6 text-[#8588A5]">
-                    {subject.description}
-                  </p>
-
-                  <div className="mt-5 flex items-center justify-between text-sm">
-                    <span className="font-semibold text-[#555B7D]">
-                      Course Progress
-                    </span>
-
-                    <span
-                      className="font-extrabold"
-                      style={{ color: subject.color }}
-                    >
-                      {subject.progress}%
-                    </span>
-                  </div>
-
-                  <div className="mt-3 h-2 overflow-hidden rounded-full bg-[#EEEAF8]">
-                    <div
-                      className="h-full rounded-full transition-all duration-500"
-                      style={{
-                        width: `${subject.progress}%`,
-                        backgroundColor: subject.color,
-                      }}
-                    />
-                  </div>
-
-                  <div className="mt-4 flex items-center justify-between">
-                    <span className="text-xs font-medium text-[#8588A5]">
-                      {subject.topics}
-                    </span>
-
-                    <button
-                      onClick={() =>
-                        onOpenSubject?.(subject.shortName)
-                      }
-                      className="text-sm font-bold text-[#6840D9] transition hover:text-[#3B0CA3]"
-                    >
-                      Continue →
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <CurriculumExplorer
+              selection={selection}
+              completedBySubject={completedBySubject}
+            />
           </section>
 
           {/* PROGRESS AND ACTIVITY */}
@@ -450,108 +385,136 @@ export default function StudentDashboard({
             id="my-progress"
             className="mb-10 grid scroll-mt-8 grid-cols-1 gap-6 xl:grid-cols-2"
           >
-
-            {/* PROGRESS */}
-            <div className="rounded-2xl border border-[#E5E2F5] bg-white p-6">
-              <h2 className="text-xl font-extrabold">
-                Learning Progress
-              </h2>
+            {/* SUBJECT-WISE PROGRESS */}
+            <div className="rounded-2xl border border-[#E5E2F5] bg-white p-5 sm:p-6">
+              <h2 className="text-xl font-extrabold">Subject-wise Progress</h2>
 
               <p className="mt-1 text-sm text-[#8588A5]">
-                Your subject-wise learning progress.
+                Subjects where you have completed at least one topic.
               </p>
 
-              <div className="mt-7 space-y-6">
-                {subjects.map((subject) => (
-                  <div key={subject.shortName}>
-                    <div className="mb-2 flex justify-between gap-3">
-                      <span className="text-sm font-semibold">
-                        {subject.shortName}
-                      </span>
-
-                      <span className="text-sm font-bold text-[#555B7D]">
-                        {subject.progress}%
-                      </span>
-                    </div>
-
-                    <div className="h-2.5 overflow-hidden rounded-full bg-[#EEEAF8]">
-                      <div
-                        className="h-full rounded-full transition-all duration-500"
-                        style={{
-                          width: `${subject.progress}%`,
-                          backgroundColor: subject.color,
-                        }}
-                      />
-                    </div>
-
-                    <p className="mt-1 text-xs text-[#9294AE]">
-                      {subject.topics}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-8 rounded-xl bg-[#F5F2FF] p-4">
-                <div className="flex justify-between gap-3">
-                  <span className="text-sm font-bold text-[#3B0CA3]">
-                    Overall Progress
-                  </span>
-
-                  <span className="text-sm font-extrabold text-[#3B0CA3]">
-                    {overallProgress}%
-                  </span>
-                </div>
-
-                <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-white">
-                  <div
-                    className="h-full rounded-full bg-gradient-to-r from-[#3B0CA3] to-[#6840D9] transition-all duration-500"
-                    style={{ width: `${overallProgress}%` }}
-                  />
-                </div>
-
-                <p className="mt-2 text-xs text-[#777B99]">
-                  {completedTopicCount} of {totalTopics} topics completed
+              {startedSubjects.length === 0 ? (
+                <p className="mt-6 rounded-xl bg-[#F8F7FF] px-4 py-3 text-sm text-[#555B7D]">
+                  You have not completed any topic yet. Open a topic and press
+                  "Mark as Completed" to start tracking.
                 </p>
-              </div>
+              ) : (
+                <div className="mt-6 space-y-5">
+                  {startedSubjects.map(({ subject, done, progress, inactiveElective }) => (
+                    <div key={subject.code}>
+                      <div className="mb-2 flex justify-between gap-3">
+                        <Link
+                          to={`/subjects/${subject.code}`}
+                          className="min-w-0 truncate text-sm font-semibold text-[#3B0CA3] hover:underline"
+                        >
+                          {subject.name}
+                        </Link>
+
+                        <span className="shrink-0 text-sm font-bold text-[#555B7D]">
+                          {progress}%
+                        </span>
+                      </div>
+
+                      <ProgressBar value={progress} height="h-2.5" />
+
+                      <p className="mt-1 text-xs text-[#9294AE]">
+                        {subject.code} · Sem {subject.semester} · {done} /{" "}
+                        {subject.topicCount} topics
+                        {inactiveElective &&
+                          " · elective not currently chosen (progress kept)"}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
-            {/* RECENT ACTIVITY */}
-            <div className="rounded-2xl border border-[#E5E2F5] bg-white p-6">
-              <h2 className="text-xl font-extrabold">
-                Recent Activity
-              </h2>
+            {/* RECENTLY COMPLETED TOPICS */}
+            <div className="rounded-2xl border border-[#E5E2F5] bg-white p-5 sm:p-6">
+              <h2 className="text-xl font-extrabold">Recently Studied Topics</h2>
 
               <p className="mt-1 text-sm text-[#8588A5]">
-                Sample learning activities.
+                Topics you most recently marked as completed.
               </p>
 
-              <div className="mt-6 space-y-5">
-                {activities.map((activity, index) => (
-                  <div
-                    key={index}
-                    className="flex items-start gap-4"
+              {recentTopics.length === 0 ? (
+                <p className="mt-6 rounded-xl bg-[#F8F7FF] px-4 py-3 text-sm text-[#555B7D]">
+                  Nothing here yet.
+                </p>
+              ) : (
+                <ul className="mt-6 space-y-4">
+                  {recentTopics.slice(0, 5).map((item) => (
+                    <li
+                      key={`${item.code}-${item.topicId}`}
+                      className="flex items-start gap-3"
+                    >
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#F0EDFF] font-bold text-[#6840D9]">
+                        ✓
+                      </div>
+
+                      <div className="min-w-0 flex-1">
+                        <Link
+                          to={`/subjects/${item.code}/topics/${item.topicId}`}
+                          className="block break-words text-sm font-bold hover:text-[#6840D9]"
+                        >
+                          {item.topicTitle}
+                        </Link>
+
+                        <p className="mt-0.5 text-xs text-[#8588A5]">
+                          {item.subjectName} · {item.unitLabel}
+                        </p>
+                      </div>
+
+                      <span className="shrink-0 text-xs text-[#9294AE]">
+                        {new Date(item.completedAt).toLocaleDateString()}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </section>
+
+          {/* LATEST QUIZ RESULTS */}
+          <section className="mb-10 rounded-2xl border border-[#E5E2F5] bg-white p-5 sm:p-6">
+            <h2 className="text-xl font-extrabold">Latest Quiz Results</h2>
+
+            <p className="mt-1 text-sm text-[#8588A5]">
+              Your most recent Practice Quiz scores.
+            </p>
+
+            {recentQuizzes.length === 0 ? (
+              <p className="mt-6 rounded-xl bg-[#F8F7FF] px-4 py-3 text-sm text-[#555B7D]">
+                No Practice Quiz attempts yet.
+              </p>
+            ) : (
+              <ul className="mt-6 divide-y divide-[#EEEAF8]">
+                {recentQuizzes.map((quiz) => (
+                  <li
+                    key={quiz.id}
+                    className="flex flex-wrap items-center justify-between gap-3 py-3"
                   >
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#F0EDFF] font-bold text-[#6840D9]">
-                      {activity.icon}
-                    </div>
+                    <div className="min-w-0">
+                      <p className="break-words text-sm font-bold">{quiz.topic}</p>
 
-                    <div className="min-w-0 flex-1">
-                      <h3 className="text-sm font-bold">
-                        {activity.title}
-                      </h3>
-
-                      <p className="mt-1 text-xs text-[#8588A5]">
-                        {activity.subject}
+                      <p className="text-xs text-[#8588A5]">
+                        {quiz.subject} · {quiz.date}
                       </p>
                     </div>
 
-                    <span className="shrink-0 text-xs text-[#9294AE]">
-                      {activity.time}
+                    <span
+                      className={`rounded-full px-3 py-1 text-sm font-bold ${
+                        quiz.percentage >= 60
+                          ? "bg-green-100 text-green-700"
+                          : "bg-amber-100 text-amber-700"
+                      }`}
+                    >
+                      {quiz.score}/{quiz.total} · {quiz.percentage}%
                     </span>
-                  </div>
+                  </li>
                 ))}
-              </div>
-            </div>
+              </ul>
+            )}
           </section>
 
           {/* PROFILE */}
@@ -559,9 +522,7 @@ export default function StudentDashboard({
             id="my-profile"
             className="mb-8 scroll-mt-8 rounded-2xl border border-[#E5E2F5] bg-white p-6"
           >
-            <h2 className="text-xl font-extrabold">
-              My Profile
-            </h2>
+            <h2 className="text-xl font-extrabold">My Profile</h2>
 
             <div className="mt-5 flex flex-wrap items-center gap-4">
               <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#3B0CA3] to-[#6840D9] text-xl font-bold text-white">
@@ -571,18 +532,14 @@ export default function StudentDashboard({
               <div>
                 <h3 className="font-bold">{studentName}</h3>
 
-                <p className="mt-1 text-sm text-[#8588A5]">
-                  LearnCraft Student
-                </p>
+                <p className="mt-1 text-sm text-[#8588A5]">LearnCraft Student</p>
               </div>
             </div>
           </section>
 
-          {/* FOOTER */}
           <footer className="border-t border-[#E5E2F5] py-6 text-center text-sm text-[#9294AE]">
             © 2026 LearnCraft | Personalized Learning System
           </footer>
-
         </main>
       </div>
     </div>

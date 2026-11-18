@@ -1,4 +1,3 @@
-/* global require, process, module */
 
 const jwt = require("jsonwebtoken");
 

@@ -1,5 +1,9 @@
-
 import { useState } from "react";
+
+import Logo from "./Logo";
+
+const inputClass =
+  "w-full rounded-xl border border-[#E6E2FA] bg-white px-4 py-3 text-[#181E56] outline-none transition placeholder:text-[#615F75]/60 focus:border-[#8060F5] focus:ring-2 focus:ring-[#8060F5]/20";
 
 export default function LoginPage({
   onLogin,
@@ -44,181 +48,122 @@ export default function LoginPage({
       }
     } catch (error) {
       setError(error.message || "Login failed. Please try again.");
-    } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#F3F1FF] flex items-center justify-center px-4 py-8">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-white to-[#F3F1FF] px-4 py-8">
+      <div className="w-full max-w-md">
+        <button
+          type="button"
+          onClick={onBack}
+          className="mb-6 text-sm font-semibold text-[#6C55F5] transition hover:text-[#8060F5]"
+        >
+          ← Back
+        </button>
 
-      <div className="w-full max-w-6xl bg-white rounded-3xl shadow-xl overflow-hidden grid md:grid-cols-2">
-
-        {/* LEFT BRANDING SECTION */}
-        <div className="relative overflow-hidden bg-gradient-to-br from-[#010737] via-[#172A9B] to-[#3B0CA3] text-white flex flex-col items-center justify-center p-8 md:p-12">
-
-          <div className="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-blue-500/20 blur-3xl" />
-
-          <div className="absolute -bottom-20 -right-20 w-64 h-64 rounded-full bg-purple-500/30 blur-3xl" />
-
-          {/* LEARNCRAFT LOGO */}
-          <div className="relative w-full max-w-[380px] rounded-2xl bg-white p-4 shadow-2xl">
-
-            <img
-              src="/Images/LearnCraft-Logo.png"
-              alt="LearnCraft Logo"
-              className="block w-full h-auto object-contain"
-            />
-
+        <div className="rounded-2xl border border-[#E6E2FA] bg-white p-6 shadow-sm sm:p-8">
+          <div className="flex justify-center">
+            <Logo size={56} />
           </div>
 
-          <div className="relative text-center mt-9">
-
-            <h1 className="text-3xl md:text-4xl font-extrabold">
-              Learn Smarter.
-              <br />
-              Grow Faster.
+          <div className="mt-6 text-center">
+            <h1 className="text-2xl font-extrabold text-[#181E56]">
+              Welcome back
             </h1>
 
-            <p className="text-blue-100 mt-5 max-w-sm leading-relaxed">
-              Your personalized learning journey starts here.
-              Learn at your own pace and achieve your goals.
+            <p className="mt-2 text-sm text-[#615F75]">
+              Sign in to continue learning.
             </p>
-
-            <div className="flex flex-wrap justify-center gap-3 mt-8">
-
-              <span className="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm">
-                Smart Learning
-              </span>
-
-              <span className="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm">
-                Personalized Growth
-              </span>
-
-            </div>
-          </div>
-        </div>
-
-        {/* RIGHT LOGIN SECTION */}
-        <div className="p-8 md:p-12 lg:p-16 flex flex-col justify-center">
-
-          <button
-            type="button"
-            onClick={onBack}
-            className="self-start text-sm font-semibold text-[#6840D9] hover:text-[#3B0CA3] mb-8"
-          >
-            ← Back to Home
-          </button>
-
-          <div className="mb-8">
-
-            <p className="text-sm font-bold uppercase tracking-widest text-[#6840D9] mb-3">
-              Welcome to LearnCraft
-            </p>
-
-            <h2 className="text-3xl md:text-4xl font-extrabold text-[#010737]">
-              Welcome Back!
-            </h2>
-
-            <p className="text-[#333B69] mt-3">
-              Sign in with your registered email address.
-            </p>
-
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-
+          <form onSubmit={handleSubmit} noValidate className="mt-7 space-y-5">
             {/* EMAIL */}
             <div>
-
               <label
                 htmlFor="email"
-                className="block text-sm font-semibold text-[#010737] mb-2"
+                className="mb-2 block text-sm font-semibold text-[#181E56]"
               >
-                Email Address
+                Email
               </label>
 
               <input
                 id="email"
                 type="email"
-                placeholder="Enter your registered email"
+                autoComplete="email"
+                placeholder="you@example.com"
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value);
                   setError("");
                 }}
-                className="w-full px-4 py-3 rounded-xl border border-[#DCD8FF] outline-none focus:border-[#6840D9] focus:ring-2 focus:ring-[#6840D9]/20 transition"
+                aria-invalid={Boolean(error)}
+                className={inputClass}
                 required
               />
-
             </div>
 
             {/* PASSWORD */}
             <div>
-
-              <div className="flex justify-between items-center mb-2">
-
-                <label
-                  htmlFor="password"
-                  className="text-sm font-semibold text-[#010737]"
-                >
-                  Password
-                </label>
-
-                <button
-                  type="button"
-                  onClick={onForgotPassword}
-                  className="text-sm font-semibold text-[#6840D9] hover:text-[#3B0CA3]"
-                >
-                  Forgot Password?
-                </button>
-
-              </div>
+              <label
+                htmlFor="password"
+                className="mb-2 block text-sm font-semibold text-[#181E56]"
+              >
+                Password
+              </label>
 
               <div className="relative">
-
                 <input
                   id="password"
                   type={showPassword ? "text" : "password"}
+                  autoComplete="current-password"
                   placeholder="Enter your password"
                   value={password}
                   onChange={(e) => {
                     setPassword(e.target.value);
                     setError("");
                   }}
-                  className="w-full px-4 py-3 pr-20 rounded-xl border border-[#DCD8FF] outline-none focus:border-[#6840D9] focus:ring-2 focus:ring-[#6840D9]/20 transition"
+                  aria-invalid={Boolean(error)}
+                  className={`${inputClass} pr-16`}
                   required
                 />
 
                 <button
                   type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-sm font-semibold text-[#6840D9]"
+                  onClick={() => setShowPassword((visible) => !visible)}
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                  aria-pressed={showPassword}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 rounded px-1 text-sm font-semibold text-[#6C55F5] hover:text-[#8060F5]"
                 >
                   {showPassword ? "Hide" : "Show"}
                 </button>
-
               </div>
             </div>
 
-            {/* REMEMBER ME */}
-            <div className="flex items-center gap-2">
-
-              <input
-                type="checkbox"
-                id="remember"
-                checked={rememberMe}
-                onChange={(e) => setRememberMe(e.target.checked)}
-                className="w-4 h-4 accent-[#6840D9] cursor-pointer"
-              />
-
+            {/* REMEMBER ME + FORGOT PASSWORD */}
+            <div className="flex items-center justify-between gap-3">
               <label
                 htmlFor="remember"
-                className="text-sm text-[#333B69] cursor-pointer"
+                className="flex cursor-pointer items-center gap-2 text-sm text-[#615F75]"
               >
+                <input
+                  type="checkbox"
+                  id="remember"
+                  checked={rememberMe}
+                  onChange={(e) => setRememberMe(e.target.checked)}
+                  className="h-4 w-4 cursor-pointer accent-[#8060F5]"
+                />
                 Remember me
               </label>
 
+              <button
+                type="button"
+                onClick={onForgotPassword}
+                className="text-sm font-semibold text-[#6C55F5] hover:text-[#8060F5]"
+              >
+                Forgot password?
+              </button>
             </div>
 
             {/* ERROR MESSAGE */}
@@ -235,35 +180,33 @@ export default function LoginPage({
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-3.5 rounded-xl text-white font-bold text-lg bg-gradient-to-r from-[#1237D5] to-[#6416C8] hover:opacity-90 hover:shadow-lg transition duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+              className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#8060F5] py-3 text-base font-bold text-white transition hover:bg-[#6C55F5] focus:outline-none focus:ring-2 focus:ring-[#8060F5]/40 disabled:cursor-not-allowed disabled:opacity-70"
             >
-              {isLoading ? "Signing In..." : "Sign In →"}
+              {isLoading && (
+                <span
+                  aria-hidden="true"
+                  className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white"
+                />
+              )}
+              {isLoading ? "Logging in..." : "Login"}
             </button>
-
           </form>
 
-          {/* REGISTER LINK */}
-          <div className="text-center mt-8">
-
-            <p className="text-sm text-[#333B69]">
-              Don't have an account?{" "}
-
-              <button
-                type="button"
-                onClick={onRegister}
-                className="font-bold text-[#6840D9] hover:text-[#3B0CA3]"
-              >
-                Create Account
-              </button>
-            </p>
-
-          </div>
-
-          <p className="text-center text-xs text-gray-400 mt-10">
-            © 2026 LearnCraft. All rights reserved.
+          <p className="mt-6 text-center text-sm text-[#615F75]">
+            Don't have an account?{" "}
+            <button
+              type="button"
+              onClick={onRegister}
+              className="font-bold text-[#6C55F5] hover:text-[#8060F5]"
+            >
+              Create account
+            </button>
           </p>
-
         </div>
+
+        <p className="mt-6 text-center text-xs text-[#615F75]/70">
+          © 2026 LearnCraft
+        </p>
       </div>
     </div>
   );

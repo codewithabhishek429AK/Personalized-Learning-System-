@@ -3,7 +3,7 @@ import { useOutletContext } from "react-router-dom";
 
 import StudentDashboard from "./StudentDashboard";
 
-function DashboardRoute({ onLogout, onOpenSubject }) {
+function DashboardRoute({ onLogout }) {
   // Receive verified student profile from ProtectedRoute
   const { student } = useOutletContext();
 
@@ -11,7 +11,6 @@ function DashboardRoute({ onLogout, onOpenSubject }) {
     <StudentDashboard
       studentName={student?.name || "Student"}
       onLogout={onLogout}
-      onOpenSubject={onOpenSubject}
     />
   );
 }

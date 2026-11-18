@@ -1,6 +1,8 @@
 
 import { useState } from "react";
 
+import Logo from "./Logo";
+
 export default function RegistrationPage({
   onRegister,
   onLogin,
@@ -85,14 +87,8 @@ export default function RegistrationPage({
           <div className="absolute -bottom-20 -right-20 w-64 h-64 rounded-full bg-purple-500/30 blur-3xl" />
 
           {/* LEARNCRAFT LOGO */}
-          <div className="relative w-full max-w-[380px] rounded-2xl bg-white p-4 shadow-2xl">
-
-            <img
-              src="/Images/LearnCraft-Logo.png"
-              alt="LearnCraft Logo"
-              className="block w-full h-auto object-contain"
-            />
-
+          <div className="relative rounded-2xl bg-white px-6 py-4 shadow-2xl">
+            <Logo size={64} />
           </div>
 
           {/* BRAND CONTENT */}

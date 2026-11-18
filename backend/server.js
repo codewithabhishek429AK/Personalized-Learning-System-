@@ -1,5 +1,4 @@
 
-/* global require, process */
 
 const express = require("express");
 const cors = require("cors");
@@ -12,6 +11,18 @@ const studentRoutes = require("./routes/studentRoutes");
 const progressRoutes = require("./routes/progressRoutes");
 const quizRoutes = require("./routes/quizRoutes");
 const aiRoutes = require("./routes/aiRoutes");
+const curriculumRoutes = require("./routes/curriculumRoutes");
+
+const missingEnv = ["MONGO_URI", "JWT_SECRET", "GROQ_API_KEY"].filter(
+  (name) => !process.env[name]
+);
+
+if (missingEnv.length > 0) {
+  console.error(
+    `Missing required environment variables: ${missingEnv.join(", ")}`
+  );
+  process.exit(1);
+}
 
 const app = express();
 
@@ -33,6 +44,9 @@ app.use("/api/quizzes", quizRoutes);
 
 // AI Routes
 app.use("/api/ai", aiRoutes);
+
+// Curriculum Routes (verified AKTU MCA syllabus)
+app.use("/api/curriculum", curriculumRoutes);
 
 // Health Check API
 app.get("/api/health", (req, res) => {

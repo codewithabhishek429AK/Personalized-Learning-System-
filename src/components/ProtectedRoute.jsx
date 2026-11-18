@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
 
 import { apiRequest } from "../utils/api";
+import { getToken, clearSession } from "../utils/auth";
 
 function ProtectedRoute() {
   const [student, setStudent] = useState(null);
@@ -15,7 +16,7 @@ function ProtectedRoute() {
     let isMounted = true;
 
     const verifyStudent = async () => {
-      const token = localStorage.getItem("learncraft-token");
+      const token = getToken();
 
       // Check whether token exists
       if (!token) {
@@ -33,6 +34,11 @@ function ProtectedRoute() {
           setStudent(data.student);
         }
       } catch (error) {
+        // Invalid or expired token: end the session so we redirect to login
+        if (error.status === 401 || error.status === 404) {
+          clearSession();
+        }
+
         if (isMounted) {
           setError(error.message || "Unable to verify your account.");
         }
@@ -66,14 +72,14 @@ function ProtectedRoute() {
   }
 
   // Redirect to login if token is missing
-  if (!localStorage.getItem("learncraft-token")) {
+  if (!getToken()) {
     return <Navigate to="/login" replace />;
   }
 
-  // Show error if profile verification fails
+  // Show error if profile verification fails (e.g. server unreachable)
   if (error) {
     const handleLoginRedirect = () => {
-      localStorage.removeItem("learncraft-token");
+      clearSession();
       navigate("/login", { replace: true });
     };
 
@@ -87,6 +93,13 @@ function ProtectedRoute() {
           <p className="text-red-500 mb-6">
             {error}
           </p>
+
+          <button
+            onClick={() => window.location.reload()}
+            className="mr-3 rounded-xl border border-[#E6E2FA] bg-white px-6 py-3 font-semibold text-[#6C55F5] transition-colors hover:bg-[#F8F9FF]"
+          >
+            Try Again
+          </button>
 
           <button
             onClick={handleLoginRedirect}

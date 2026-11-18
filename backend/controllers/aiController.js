@@ -1,11 +1,72 @@
 
-/* global require, process, module */
 
 const Groq = require("groq-sdk");
+const { getTopic } = require("../data/curriculum");
 
-const groq = new Groq({
-  apiKey: process.env.GROQ_API_KEY,
-});
+// Create the client lazily so it never depends on dotenv load order
+let groqClient;
+
+const getGroq = () => {
+  if (!groqClient) {
+    groqClient = new Groq({ apiKey: process.env.GROQ_API_KEY });
+  }
+
+  return groqClient;
+};
+
+// ==========================================
+// RESOLVE SUBJECT / TOPIC CONTEXT
+// ==========================================
+// New clients send { subjectCode, topicId }; the server then looks up the
+// verified AKTU syllabus so the AI always gets the correct semester,
+// subject, unit and topic. Old clients may still send { subject, topic }.
+
+const resolveContext = (body) => {
+  const { subjectCode, topicId } = body;
+
+  if (subjectCode !== undefined || topicId !== undefined) {
+    const found = getTopic(subjectCode, topicId);
+
+    if (!found) {
+      return { error: "Unknown subject or topic." };
+    }
+
+    const { subject, unit, topic } = found;
+    const unitLabel = /^[IVX]+$/.test(unit.no) ? `Unit ${unit.no}` : unit.no;
+
+    return {
+      subject: subject.name,
+      topic: topic.title,
+      promptContext: `
+
+Curriculum context (AKTU MCA, NEP 2020):
+- Semester: ${subject.semester}
+- Subject: ${subject.name} (${subject.code})
+- Unit: ${unitLabel}
+- Topic: ${topic.title}
+- Official syllabus content for this topic: ${topic.text}
+
+Stay within this official syllabus content. Cover every item it lists.`,
+    };
+  }
+
+  const { subject, topic } = body;
+
+  if (
+    typeof subject !== "string" ||
+    !subject.trim() ||
+    typeof topic !== "string" ||
+    !topic.trim()
+  ) {
+    return { error: "Subject and topic are required." };
+  }
+
+  if (subject.length > 100 || topic.length > 150) {
+    return { error: "Subject or topic is too long." };
+  }
+
+  return { subject, topic, promptContext: "" };
+};
 
 // ==========================================
 // GENERATE AI QUIZ
@@ -14,23 +75,20 @@ const groq = new Groq({
 const generateAIQuiz = async (req, res) => {
   try {
     const {
-      subject,
-      topic,
       difficulty = "Medium",
       numberOfQuestions = 5,
     } = req.body;
 
-    if (
-      typeof subject !== "string" ||
-      !subject.trim() ||
-      typeof topic !== "string" ||
-      !topic.trim()
-    ) {
+    const context = resolveContext(req.body);
+
+    if (context.error) {
       return res.status(400).json({
         success: false,
-        message: "Subject and topic are required.",
+        message: context.error,
       });
     }
+
+    const { subject, topic } = context;
 
     if (!["Easy", "Medium", "Hard"].includes(difficulty)) {
       return res.status(400).json({
@@ -50,7 +108,7 @@ const generateAIQuiz = async (req, res) => {
       });
     }
 
-    const completion = await groq.chat.completions.create({
+    const completion = await getGroq().chat.completions.create({
       model: "openai/gpt-oss-120b",
       messages: [
         {
@@ -87,7 +145,7 @@ Rules:
         },
         {
           role: "user",
-          content: `Generate exactly ${numberOfQuestions} ${difficulty} difficulty MCQ questions for the subject "${subject}" and topic "${topic}". Use simple English.`,
+          content: `Generate exactly ${numberOfQuestions} ${difficulty} difficulty MCQ questions for the subject "${subject}" and topic "${topic}". Use simple English.${context.promptContext}`,
         },
       ],
       temperature: 0.5,
@@ -152,23 +210,19 @@ Rules:
 
 const generateAILesson = async (req, res) => {
   try {
-    const { subject, topic } = req.body;
+    const context = resolveContext(req.body);
 
-    // Validate subject and topic
-    if (
-      typeof subject !== "string" ||
-      !subject.trim() ||
-      typeof topic !== "string" ||
-      !topic.trim()
-    ) {
+    if (context.error) {
       return res.status(400).json({
         success: false,
-        message: "Subject and topic are required.",
+        message: context.error,
       });
     }
 
+    const { subject, topic } = context;
+
     // Generate complete learning material
-    const completion = await groq.chat.completions.create({
+    const completion = await getGroq().chat.completions.create({
       model: "openai/gpt-oss-120b",
 
       messages: [
@@ -237,7 +291,7 @@ Teaching rules:
 
 I am a beginner MCA student. Explain the topic step by step in simple English with detailed definitions, concepts, practical examples, solved examples, and relevant code or SQL queries.
 
-Make the lesson useful for university exams and technical interviews.`,
+Make the lesson useful for university exams and technical interviews.${context.promptContext}`,
         },
       ],
 

@@ -1,0 +1,268 @@
+{
+  "semester": 2,
+  "title": "Semester 2",
+  "source": "AKTU MCA First Year Evaluation Scheme & Syllabus, NEP 2020, effective 2024-25",
+  "subjects": [
+    {
+      "code": "BMC201",
+      "name": "Web Technology",
+      "type": "Theory",
+      "ltp": "3-0-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Web Page Designing", "x": "Introduction and Web Development Strategies, History of Web and Internet, Protocols Governing Web, HTML-Introduction, HTML Tags, HTML-Grouping Using Div & Span, HTML-Lists, HTML-Images, HTML- Hyperlink, HTML-Table, HTML-Iframe, HTML-Form, Introduction of CSS, CSS Syntax, External Style Sheet using < link >, Multiple Style Sheets, Value Lengths and Percentages, CSS-Selectors, CSS-Box Model, Floats, Clear, Introduction to Bootstrap." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Scripting", "x": "Introduction to JavaScript, Creating Variables in JavaScript, Creating Functions in JavaScript, UI Events, Returning Data from Functions, Working with Conditions, looping in JavaScript, Block Scope Variables, Working with Objects, Creating Object using Object Literals, Manipulating DOM Elements with JavaScript" }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Web Application development using JSP & Servlets", "x": "Servlet Overview and Architecture, Interface Servlet and the Servlet Life Cycle, Handling HTTP get Requests, Handling HTTP post Requests, Redirecting Requests to Other Resources, Session Tracking, Cookies, Session Tracking with Http Session." },
+          { "t": "Java Server Pages (JSP)", "x": "Introduction, Java Server Pages Overview, A First Java Server Page Example, Implicit Objects, Scripting, Standard Actions, Directives, Custom Tag Libraries." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Spring", "x": "Spring Core Basics-Spring Dependency Injection concepts, Introduction to Design patterns, Factory Design Pattern, Strategy Design pattern, Spring Inversion of Control, AOP, Bean Scopes-Singleton, Prototype, Request, Session, Application, WebSocket, Auto wiring, Annotations, Life Cycle Call backs, Bean Configuration styles" }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Spring Boot", "x": "Spring Boot Configuration, Spring Boot Annotations, Spring Boot Actuator, Spring Boot Build Systems, Spring Boot Code Structure, Spring Boot Runners, Logger," },
+          { "t": "Building RESTful Web Services", "x": "Rest Controller, Request Mapping, Request Body, Path Variable, Request Parameter, GET, POST, PUT, DELETE APIs, Build Web Applications" }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC202",
+      "name": "Object Oriented Programming",
+      "type": "Theory",
+      "ltp": "3-0-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Introduction", "x": "Object Oriented Programming: objects, classes, Abstraction, Encapsulation, Inheritance, Polymorphism, OOP in Java, Characteristics of Java, The Java Environment, Java Source File Structure, and Compilation." },
+          { "t": "Fundamental Programming Structures in Java", "x": "Defining classes in Java, constructors, methods, access specifies, static members, Comments, Data Types, Variables, Operators, Control Flow, Arrays." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Inheritance", "x": "Super classes, sub classes, Protected members, constructors in sub classes, Object class, abstract classes and methods." },
+          { "t": "Interfaces", "x": "defining an interface, implementing interface, differences between classes and interfaces and extending interfaces, Object cloning, inner classes." },
+          { "t": "Packages", "x": "Defining Package, CLASSPATH Setting for Packages, Making JAR Files for Library Packages, Import and Static Import Naming Convention For Packages, Networking java.net package." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Exceptions", "x": "exception hierarchy, throwing and catching exceptions, built-in exceptions, creating own exceptions, Stack Trace Elements." },
+          { "t": "Input / Output Basics", "x": "Byte streams and Character streams, Reading and Writing, Console Reading and Writing Files." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Multithreading", "x": "Differences between multi-threading and multitasking, thread life cycle, creating threads, synchronizing threads, Inter-thread communication, daemon threads, thread groups." },
+          { "t": "Generic Programming", "x": "Generic classes, generic methods, Bounded Types: Restrictions and Limitations." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Graphics programming", "x": "Frame, Components, working with 2D shapes, Using colors, fonts, and images." },
+          { "t": "Basics of event handling", "x": "event handlers, adapter classes, actions, mouse events, AWT event hierarchy." },
+          { "t": "Introduction to Swing", "x": "layout management, Swing Components: Text Fields, Text Areas, Buttons, Check Boxes, Radio Buttons, Lists, choices, Scrollbars, Windows Menus and Dialog Boxes." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC203",
+      "name": "Operating Systems",
+      "type": "Theory",
+      "ltp": "3-0-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Introduction", "x": "Operating System Structure- Layered structure, System Components, Operating system functions, Classification of Operating systems- Batch, Interactive, Time-sharing, Real-Time System, Multiprocessor Systems, Multiuser Systems, Multi process Systems, Multithreaded Systems, Operating System services, Reentrant Kernels, Monolithic and Microkernel Systems." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Concurrent Processes", "x": "Process Concept, Principle of Concurrency, Producer / Consumer Problem, Mutual Exclusion, Critical Section Problem, Dekker's solution, Peterson's solution, Semaphores, Test and Set operation, Classical Problem in Concurrency- Dining Philosopher Problem, Sleeping Barber Problem, Inter Process Communication models and Schemes, Process generation." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "CPU Scheduling", "x": "Scheduling Concepts, Performance Criteria, Process States, Process Transition Diagram, Schedulers, Process Control Block (PCB), Process address space, Process identification information, Threads and their management, Scheduling Algorithms, Multiprocessor Scheduling." },
+          { "t": "Deadlock", "x": "System model, Deadlock characterization, Prevention, Avoidance and detection, Recovery from deadlock." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Memory Management", "x": "Basic bare machine, Resident monitor, Multiprogramming with fixed partitions, Multiprogramming with variable partitions, Protection schemes, Paging, Segmentation, Paged segmentation, Virtual memory concepts, Demand paging, Performance of demand paging, Page replacement algorithms, Thrashing, Cache memory organization, Locality of reference." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "I/O Management and Disk Scheduling", "x": "I/O devices, and I/O subsystems, I/O buffering, Disk storage and disk scheduling, RAID." },
+          { "t": "File System", "x": "File concept, File organization and access mechanism, File directories, and File sharing, File system implementation issues, File system protection and security." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC204",
+      "name": "Database Management Systems",
+      "type": "Theory",
+      "ltp": "3-0-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Introduction", "x": "Overview, Database System vs File System, Database System Concept and Architecture, Data Model Schema and Instances, Data Independence and Database Language and Interfaces, Data Definitions Language, DML, Overall Database Structure." },
+          { "t": "Data Modeling Using the Entity Relationship Model", "x": "ER Model Concepts, Notation for ER Diagram, Mapping Constraints, Keys, Concepts of Super Key, Candidate Key, Primary Key, Generalization, Aggregation, Reduction of an ER Diagrams to Tables, Extended ER Model, Relationship of Higher Degree." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Relational data Model and Language", "x": "Relational Data Model Concepts, Integrity Constraints, Entity Integrity, Referential Integrity, Keys Constraints, Domain Constraints, Relational Algebra, Relational Calculus, Tuple and Domain Calculus." },
+          { "t": "Introduction to SQL", "x": "Characteristics of SQL, Advantage of SQL. SQL Data Type and Literals. Types of SQL Commands. SQL Operators and their Procedure. Tables, Views and Indexes. Queries and Sub Queries. Aggregate Functions. Insert, Update and Delete Operations, Joins, Unions, Intersection, Minus, Cursors, Triggers, Procedures in SQL/PL SQL" }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Data Base Design & Normalization", "x": "Functional dependencies, normal forms, first, second, third normal forms, BCNF, inclusion dependence, loss less join decompositions, normalization using FD, MVD, and JDs, alternative approaches to database design" }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Transaction Processing Concept", "x": "Transaction System, Testing of Serializability, Serializability of Schedules, Conflict & View Serializable Schedule, Recoverability, Recovery from Transaction Failures, Log Based Recovery, Checkpoints, Deadlock Handling." },
+          { "t": "Distributed Database", "x": "Distributed Data Storage, Concurrency Control, Directory System" }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Concurrency Control Techniques", "x": "Concurrency Control, Locking Techniques for Concurrency Control, Time Stamping Protocols for Concurrency Control, Validation Based Protocol, Multiple Granularity, Multi Version Schemes, Recovery with Concurrent Transaction, Case Study of Oracle." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC205",
+      "name": "Data Structures & Analysis of Algorithms",
+      "type": "Theory",
+      "ltp": "4-0-0",
+      "credits": 4,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Introduction to data structure", "x": "Data, Entity, Information, Difference between Data and Information, Data type , Build in data type, Abstract data type, Definition of data structures, Types of Data Structures: Linear and Non-Linear Data Structure," },
+          { "t": "Introduction to Algorithms", "x": "Definition of Algorithms, Difference between algorithm and programs, properties of algorithm, Algorithm Design Techniques, Performance Analysis of Algorithms, Complexity of various code structures, Order of Growth, Asymptotic Notations." },
+          { "t": "Arrays", "x": "Definition, Single and Multidimensional Arrays, Representation of Arrays: Row Major Order, and Column Major Order, Derivation of Index Formulae for 1-D,2-D Array Application of arrays, Sparse Matrices and their representations." },
+          { "t": "Linked lists", "x": "Array Implementation and Pointer Implementation of Singly Linked Lists, Doubly Linked List, Circularly Linked List, Operations on a Linked List. Insertion, Deletion, Traversal, Polynomial Representation and Addition Subtraction & Multiplications of Single variable." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Stacks", "x": "Abstract Data Type, Primitive Stack operations: Push & Pop, Array and Linked Implementation of Stack in C, Application of stack: Prefix and Postfix Expressions, Evaluation of postfix expression, Iteration and Recursion- Principles of recursion, Tail recursion, Removal of recursion Problem solving using iteration and recursion with examples such as binary search, Fibonacci numbers, and Hanoi towers." },
+          { "t": "Queues", "x": "Operations on Queue: Create, Add, Delete, Full and Empty, Circular queues, Array and linked implementation of queues in C, Dequeue and Priority Queue." },
+          { "t": "Searching", "x": "Concept of Searching, Sequential search, Index Sequential Search, Binary Search. Concept of Hashing & Collision resolution Techniques used in Hashing." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Sorting", "x": "Insertion Sort, Selection Sort, Bubble Sort, Heap Sort, Comparison of Sorting Algorithms, Sorting in Linear Time: Counting Sort and Bucket Sort." },
+          { "t": "Graphs", "x": "Terminology used with Graph, Data Structure for Graph Representations: Adjacency Matrices, Adjacency List, Adjacency. Graph Traversal: Depth First Search and Breadth First Search, Connected Component." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Trees", "x": "Basic terminology used with Tree, Binary Trees, Binary Tree Representation: Array Representation and Pointer (Linked List) Representation, Binary Search Tree, Complete Binary Tree, A Extended Binary Trees, Tree Traversal algorithms: Inorder, Preorder and Postorder, Constructing Binary Tree from given Tree Traversal, Operation of Insertion, Deletion, Searching & Modification of data in Binary Search Tree. Threaded Binary trees, Huffman coding using Binary Tree, AVL Tree and B Tree." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Divide and Conquer", "x": "with Examples Such as Merge Sort, Quick Sort, Matrix Multiplication: Strassen's Algorithm" },
+          { "t": "Dynamic Programming", "x": "Dijikstra Algorithm, Bellman Ford Algorithm, All- pair Shortest Path: Warshal Algorithm, Longest Common Sub-sequence" },
+          { "t": "Greedy Programming", "x": "Prims and Kruskal algorithm." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC251",
+      "name": "Web Technology Lab",
+      "type": "Practical",
+      "ltp": "0-0-3",
+      "credits": 2,
+      "units": [
+        { "no": "Lab", "topics": [
+          { "t": "Create a simple webpage using HTML." },
+          { "t": "Create a HTML page, which has properly aligned paragraphs with image along with it." },
+          { "t": "Write a program to display list of items in different styles." },
+          { "t": "Use frames to Include Images and Videos." },
+          { "t": "Add a Cascading Style sheet for designing the web page." },
+          { "t": "Design a dynamic web page with validation using JavaScript." },
+          { "t": "Write a program using JavaScript to demonstrate the concept of built-in array methods." },
+          { "t": "Write a program using JavaScript to demonstrate the concept of nested functions." },
+          { "t": "Write programs using JavaScript for Web Page to display browsers information." },
+          { "t": "Write a program using JavaScript to merge property of two objects." },
+          { "t": "Write a program using JavaScript to include a JS file into another JS file." },
+          { "t": "Develop a Servlet to validate user name and password stored in database. Display authorized user is she/he is authorized else display unauthorized user." },
+          { "t": "Write JSP & Servlet program to store student details sent from registration form in to database table." },
+          { "t": "Write appropriate JSP pages to insert, update and delete data in student table in a single application with proper linking of JSP pages and session management." },
+          { "t": "Write a java program/servlet application to connect to a database and extract data from the table containing employee's information and display them." },
+          { "t": "Write program to demonstrate the concept of spring and spring boot." },
+          { "t": "Create REST Service for an Education Site." },
+          { "t": "Use the Spring Boot Starter Web to Create a Web Application." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC252",
+      "name": "Object Oriented Programming Lab",
+      "type": "Practical",
+      "ltp": "0-0-3",
+      "credits": 2,
+      "units": [
+        { "no": "Lab", "topics": [
+          { "t": "Use Java compiler and eclipse platform to write and execute java program." },
+          { "t": "Write programs to implement conditional statements and looping constructs." },
+          { "t": "Write programs to implement basic input / output operations." },
+          { "t": "Write programs using inheritance and polymorphism." },
+          { "t": "Write programs to implement error-handling techniques using exception handling and multithreading." },
+          { "t": "Write programs to demonstrate the use of java packages." },
+          { "t": "Write programs to demonstrate the concept of file handling and establishment of database connection." },
+          { "t": "Write program to develop a calculator application in Java." },
+          { "t": "Write program to develop a Client Server Application." },
+          { "t": "Write program to develop GUI applications using Swing components." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC253",
+      "name": "DBMS Lab",
+      "type": "Practical",
+      "ltp": "0-0-2",
+      "credits": 1,
+      "units": [
+        { "no": "Lab", "topics": [
+          { "t": "Install oracle/ MYSQL." },
+          { "t": "Create Entity-Relationship Diagram using case tools." },
+          { "t": "Write SQL statements Using ORACLE /MYSQL: a) Write basic SQL SELECT statements. b) Restrict and sort data. c) Display data from multiple tables. d) Aggregate data using group function. e) Manipulate data. f) Create and manage tables." },
+          { "t": "Normalization." },
+          { "t": "Create cursor." },
+          { "t": "Create procedure and functions." },
+          { "t": "Create packages and triggers." },
+          { "t": "Design and implement payroll processing system." },
+          { "t": "Design and implement Library Information System." },
+          { "t": "Design and implement Student Information System." },
+          { "t": "Automatic Backup of Files and Recovery of Files" }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC254",
+      "name": "Data Structures & Analysis of Algorithms Lab",
+      "type": "Practical",
+      "ltp": "0-0-3",
+      "credits": 2,
+      "units": [
+        { "no": "Lab", "topics": [
+          { "t": "To implement addition and multiplication of two 2D arrays." },
+          { "t": "To transpose a 2D array." },
+          { "t": "To implement stack using array." },
+          { "t": "To implement queue using array." },
+          { "t": "To implement circular queue using array." },
+          { "t": "To implement stack using linked list." },
+          { "t": "To implement queue using linked list." },
+          { "t": "To implement BFS using linked list." },
+          { "t": "To implement DFS using linked list." },
+          { "t": "To implement Linear Search." },
+          { "t": "To implement Binary Search." },
+          { "t": "To implement Bubble Sorting." },
+          { "t": "To implement Selection Sorting." },
+          { "t": "To implement Insertion Sorting." },
+          { "t": "To implement Merge Sorting." },
+          { "t": "To implement Heap Sorting." },
+          { "t": "To implement Matrix Multiplication by Strassen's algorithm." },
+          { "t": "Find Minimum Spanning Tree using Kruskal's Algorithm." }
+        ] }
+      ]
+    },
+    {
+      "code": "BVA251",
+      "name": "Sports and Yoga",
+      "type": "Practical",
+      "ltp": "0-0-3",
+      "credits": 0,
+      "note": "Non-credit course",
+      "units": [
+        { "no": "Part A", "topics": [
+          { "t": "Sports/Games", "x": "Some form of Athletics would be compulsory for all students, unless restricted due to medical / physical reasons. In addition to this, student has to opt for at least one game out of the remaining mentioned below. A fair theoretical knowledge and a reasonable amount of field / site practice of the chosen games will be essential. Games: Athletics (Compulsory), Volleyball, Basketball, Handball, Football, Badminton, Kabaddi, Kho-kho, Table tennis, Cricket." }
+        ] },
+        { "no": "Part B", "topics": [
+          { "t": "Introduction of Yoga", "x": "Introduction of Yoga, Origin of Yoga, Aims and Objective of Yoga, Patanjali Yoga darshan, Hath yoga, Gheranda Samhita, Karm yoga, Gyan yoga." },
+          { "t": "Asanas, Pranayam and Meditation Practices", "x": "Meaning of Asanas, Objective of Asanas, rules and regulations of Asanas and Pranayams, Types of Yogasana. Yogic postures: Standing Posture, Sitting posture, Supine posture, Prone posture, balancing Postures, Pranayam according to Patanjali and Hath Yoga, Meditaion Mudras" },
+          { "t": "Science of Yoga", "x": "Physiological effects of Asanas- Paranayama and meditation, stress management and yoga, Mental health and yoga practice, Health and Personality Development." }
+        ] }
+      ]
+    }
+  ]
+}

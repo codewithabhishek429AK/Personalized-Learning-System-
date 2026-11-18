@@ -1,170 +1,110 @@
-
 import { useEffect, useState } from "react";
-import { Outlet, useParams } from "react-router-dom";
+import { Navigate, Outlet, useNavigate, useParams } from "react-router-dom";
 
-import subjects from "../Data/subjects";
+import SiteNavbar from "../components/SiteNavbar";
+import SiteFooter from "../components/SiteFooter";
+import { getSubject, legacySubjectCodes } from "../Data/mca";
 import { apiRequest } from "../utils/api";
+import { getToken } from "../utils/auth";
 
-// Convert topic title into URL-friendly slug
-function createSlug(title) {
-  return title
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
-}
+function SubjectData({ subject }) {
+  const isLoggedIn = Boolean(getToken());
+  const [completedTopicIds, setCompletedTopicIds] = useState(() => new Set());
 
-// Map frontend numeric IDs to backend subject IDs
-const backendSubjectIds = {
-  1: "dbms",
-  2: "os",
-  3: "dsa",
-  4: "wt",
-};
-
-function SubjectLayout() {
-  const { subjectId } = useParams();
-
-  const currentSubject = subjects.find(
-    (item) => item.id === Number(subjectId)
-  );
-
-  const backendSubjectId = backendSubjectIds[subjectId];
-
-  // Load existing progress from localStorage
-  const [completedBySubject, setCompletedBySubject] = useState(() => {
-    try {
-      const savedProgress = localStorage.getItem("learncraft-progress");
-
-      return savedProgress ? JSON.parse(savedProgress) : {};
-    } catch {
-      return {};
-    }
-  });
-
-  // Fetch progress from MongoDB
+  // Load this subject's progress from MongoDB
   useEffect(() => {
-    let isMounted = true;
+    if (!isLoggedIn) return undefined;
 
-    const fetchProgress = async () => {
-      const token = localStorage.getItem("learncraft-token");
+    let ignore = false;
 
-      if (!token || !backendSubjectId || !currentSubject) {
-        return;
-      }
-
+    async function fetchProgress() {
       try {
         const data = await apiRequest("/progress");
 
-        if (!isMounted) return;
+        if (ignore) return;
 
-        const subjectProgress = data.progress.find(
-          (item) => item.subjectId === backendSubjectId
+        const record = data.progress.find(
+          (item) => item.subjectId === subject.code
         );
 
-        if (!subjectProgress) return;
-
-        // Convert backend topic IDs into frontend topic titles
-        const savedTopicTitles = subjectProgress.completedTopics
-          .map((completedTopic) => {
-            const matchedTopic = currentSubject.topics.find(
-              (topic) =>
-                createSlug(topic.title) === completedTopic.topicId
-            );
-
-            return matchedTopic ? matchedTopic.title : null;
-          })
-          .filter(Boolean);
-
-        setCompletedBySubject((previousProgress) => {
-          const existingTopics = previousProgress[subjectId] || [];
-
-          const mergedTopics = [
-            ...new Set([...existingTopics, ...savedTopicTitles]),
-          ];
-
-          return {
-            ...previousProgress,
-            [subjectId]: mergedTopics,
-          };
-        });
+        setCompletedTopicIds(
+          new Set((record?.completedTopics || []).map((t) => t.topicId))
+        );
       } catch (error) {
         console.error("Progress Fetch Error:", error.message);
       }
-    };
+    }
 
     fetchProgress();
 
     return () => {
-      isMounted = false;
+      ignore = true;
     };
-  }, [subjectId, backendSubjectId, currentSubject]);
+  }, [subject.code, isLoggedIn]);
 
-  // Save progress locally whenever it changes
-  useEffect(() => {
-    localStorage.setItem(
-      "learncraft-progress",
-      JSON.stringify(completedBySubject)
-    );
-  }, [completedBySubject]);
+  // Mark topic as completed (saved in MongoDB)
+  const markTopicCompleted = async (topicId) => {
+    if (completedTopicIds.has(topicId)) return;
 
-  const completedTopics = completedBySubject[subjectId] || [];
-
-  // Mark topic as completed
-  const markTopicCompleted = async (topicId, topicTitle) => {
-    const isAlreadyCompleted = completedTopics.includes(topicTitle);
-
-    if (isAlreadyCompleted) return;
-
-    // Update frontend immediately
-    setCompletedBySubject((previousProgress) => {
-      const currentCompleted = previousProgress[subjectId] || [];
-
-      if (currentCompleted.includes(topicTitle)) {
-        return previousProgress;
-      }
-
-      return {
-        ...previousProgress,
-        [subjectId]: [...currentCompleted, topicTitle],
-      };
+    await apiRequest("/progress/complete-topic", {
+      method: "POST",
+      body: JSON.stringify({ subjectId: subject.code, topicId }),
     });
 
-    // Save progress to MongoDB
-    const token = localStorage.getItem("learncraft-token");
-
-    if (!token || !backendSubjectId) {
-      return;
-    }
-
-    try {
-      await apiRequest("/progress/complete-topic", {
-        method: "POST",
-        body: JSON.stringify({
-          subjectId: backendSubjectId,
-          topicId,
-        }),
-      });
-
-      console.log("Topic progress saved successfully!");
-    } catch (error) {
-      console.error("Progress Save Error:", error.message);
-    }
+    setCompletedTopicIds((previous) => new Set([...previous, topicId]));
   };
-
-  if (!currentSubject) {
-    return <p className="p-8">Subject not found.</p>;
-  }
 
   return (
     <Outlet
       context={{
-        currentSubject,
-        completedTopics,
+        subject,
+        completedTopicIds,
         markTopicCompleted,
+        isLoggedIn,
       }}
     />
   );
+}
+
+function SubjectLayout() {
+  const { subjectId } = useParams();
+  const navigate = useNavigate();
+
+  // Old numeric URLs (/subjects/1) redirect to the official subject code
+  const legacyCode = legacySubjectCodes[subjectId];
+
+  if (legacyCode) {
+    return <Navigate to={`/subjects/${legacyCode}`} replace />;
+  }
+
+  const subject = getSubject(subjectId);
+
+  if (!subject) {
+    return (
+      <div className="min-h-screen bg-[#F3F1FF] text-[#010737]">
+        <SiteNavbar />
+
+        <main className="mx-auto max-w-xl px-6 py-20 text-center">
+          <h1 className="text-3xl font-extrabold">Subject not found</h1>
+
+          <p className="mt-3 text-[#333B69]">
+            No subject with the code "{subjectId}" exists in the MCA curriculum.
+          </p>
+
+          <button
+            onClick={() => navigate("/", { replace: true })}
+            className="mt-6 rounded-xl bg-[#6840D9] px-6 py-3 font-semibold text-white hover:bg-[#3B0CA3]"
+          >
+            Go to Home
+          </button>
+        </main>
+
+        <SiteFooter />
+      </div>
+    );
+  }
+
+  return <SubjectData key={subject.code} subject={subject} />;
 }
 
 export default SubjectLayout;

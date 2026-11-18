@@ -1,7 +1,7 @@
 
-/* global require, module */
 
 const Progress = require("../models/Progress");
+const { getTopic } = require("../data/curriculum");
 
 // Get Student Learning Progress
 const getProgress = async (req, res) => {
@@ -37,34 +37,33 @@ const completeTopic = async (req, res) => {
       });
     }
 
-    let progress = await Progress.findOne({
-      student: req.studentId,
-      subjectId,
-    });
-
-    if (!progress) {
-      progress = new Progress({
-        student: req.studentId,
-        subjectId,
-        completedTopics: [],
+    if (!getTopic(subjectId, topicId)) {
+      return res.status(400).json({
+        success: false,
+        message: "Unknown subject or topic.",
       });
     }
 
-    const alreadyCompleted = progress.completedTopics.some(
-      (topic) => topic.topicId === topicId
+    // Atomic update: avoids duplicate topics if two requests arrive together
+    await Progress.updateOne(
+      { student: req.studentId, subjectId },
+      { $setOnInsert: { completedTopics: [] } },
+      { upsert: true }
     );
 
-    if (alreadyCompleted) {
-      return res.status(200).json({
-        success: true,
-        message: "Topic is already completed.",
-        progress,
-      });
-    }
+    const updated = await Progress.findOneAndUpdate(
+      {
+        student: req.studentId,
+        subjectId,
+        "completedTopics.topicId": { $ne: topicId },
+      },
+      { $push: { completedTopics: { topicId } } },
+      { returnDocument: "after" }
+    );
 
-    progress.completedTopics.push({ topicId });
-
-    await progress.save();
+    const progress =
+      updated ||
+      (await Progress.findOne({ student: req.studentId, subjectId }));
 
     return res.status(200).json({
       success: true,

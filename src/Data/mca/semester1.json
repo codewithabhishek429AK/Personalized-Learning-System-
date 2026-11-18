@@ -1,0 +1,248 @@
+{
+  "semester": 1,
+  "title": "Semester 1",
+  "source": "AKTU MCA First Year Evaluation Scheme & Syllabus, NEP 2020, effective 2024-25",
+  "subjects": [
+    {
+      "code": "BMC101",
+      "name": "Fundamental of Computers & Emerging Technologies",
+      "type": "Theory",
+      "ltp": "3-0-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Introduction to Computer", "x": "Definition, Computer Hardware & Computer Software" },
+          { "t": "Components", "x": "Hardware – Introduction, Input devices, Output devices, Central Processing Unit, Memory- Primary and Secondary. Software - Introduction, Types – System and Application." },
+          { "t": "Computer Languages", "x": "Introduction, Concept of Compiler, Interpreter & Assembler" },
+          { "t": "Problem solving concept", "x": "Algorithms – Introduction, Definition, Characteristics, Limitations, Conditions in pseudo-code, Loops in pseudo code." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Operating system", "x": "Definition, Functions, Types, Classification, Elements of command based and GUI based operating system." },
+          { "t": "Computer Network", "x": "Overview, Types (LAN, WAN and MAN), Data communication, topologies." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Internet", "x": "Overview, Architecture, Functioning, Basic services like WWW, FTP, Telnet, Gopher etc., Search engines, E-mail, Web Browsers." },
+          { "t": "Internet of Things (IoT)", "x": "Definition, Sensors, their types and features, Smart Cities, Industrial Internet of Things." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Block chain", "x": "Introduction, overview, features, limitations and application areas fundamentals of Block Chain." },
+          { "t": "Crypto currencies", "x": "Introduction, Applications and use cases" },
+          { "t": "Cloud Computing", "x": "nature and benefits, AWS, Google, Microsoft & IBM Services" }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Emerging Technologies", "x": "Introduction, overview, features, limitations and application areas of Augmented Reality, Virtual Reality, Grid computing, Green computing, Big data analytics, Quantum Computing and Brain Computer Interface" }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC102",
+      "name": "Problem Solving using C",
+      "type": "Theory",
+      "ltp": "3-1-0",
+      "credits": 4,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Basics of programming", "x": "Approaches to problem solving, Use of high-level programming language for systematic development of programs, Concept of algorithm and flowchart, Concept and role of structured programming." },
+          { "t": "Basics of C", "x": "History of C, Salient features of C, Structure of C Program, Compiling C Program, Link and Run C Program, Character set, Tokens, Keywords, Identifiers, Constants, Variables, Instructions, Data types, Standard Input/Output, Operators and expressions." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Conditional Program Execution", "x": "if, if-else, and nested if-else statements, Switch statements, Restrictions on switch values, Use of break and default with switch, Comparison of switch and if-else." },
+          { "t": "Loops and Iteration", "x": "for, while and do-while loops, Multiple loop variables, Nested loops, Assignment operators, break and continue statement." },
+          { "t": "Functions", "x": "Introduction, Types, Declaration of a Function, Function calls, Defining functions, Function Prototypes, Passing arguments to a function, Return values and their types, Writing multifunction program, Calling function by value, Recursive functions." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Arrays", "x": "Array notation and representation, Declaring one-dimensional array, Initializing arrays, Accessing array elements, Manipulating array elements, Arrays of unknown or varying size, Two-dimensional arrays, Multidimensional arrays." },
+          { "t": "Pointers", "x": "Introduction, Characteristics, * and & operators, Pointer type declaration and assignment, Pointer arithmetic, Call by reference, Passing pointers to functions, array of pointers, Pointers to functions, Pointer to pointer, Array of pointers." },
+          { "t": "Strings", "x": "Introduction, Initializing strings, Accessing string elements, Array of strings, Passing strings to functions, String functions." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Structure", "x": "Introduction, Initializing, defining and declaring structure, Accessing members, Operations on individual members, Operations on structures, Structure within structure, Array of structure, Pointers to structure." },
+          { "t": "Union", "x": "Introduction, Declaring union, Usage of unions, Operations on union. Enumerated data types" },
+          { "t": "Storage classes", "x": "Introduction, Types- automatic, register, static and external." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Dynamic Memory Allocation", "x": "Introduction, Library functions – malloc, calloc, realloc and free." },
+          { "t": "File Handling", "x": "Basics, File types, File operations, File pointer, File opening modes, File handling functions, File handling through command line argument, Record I/O in files." },
+          { "t": "Graphics", "x": "Introduction, Constant, Data types and global variables used in graphics, Library functions used in drawing, Drawing and filling images, GUI interaction within the program." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC103",
+      "name": "Principles of Management & Communication",
+      "type": "Theory",
+      "ltp": "3-0-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Management", "x": "Need, Scope, Meaning and Definition. The process of Management, Development of Management thought F.W. Taylor and Henry Fayol, Harthorne Studies, Qualities of an Efficient Management." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Planning & Organizing", "x": "Need, Scope and Importance of Planning, Steps in planning, Decision making model. Organizing need and Importance, Organizational Design, Organizational structure, centralization and Decentralization, Delegation." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Directing & Controlling", "x": "Motivation—Meaning, Importance, need. Theories of Motivation, Leadership—meaning, need and importance, leadership style, Qualities of effective leader, principles of directing, Basic control process, Different control Techniques." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Introduction to Communication", "x": "What is Communication, Levels of communication, Barriers to communication, Process of Communication, Non-verbal Communication, The flow of Communication: Downward, Upward, Lateral or Horizontal (Peer group) Communication, Technology Enabled communication, Impact of Technology, Selection of appropriate communication Technology, Importance of Technical communication." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Business letters", "x": "Sales & Credit letters; Claim and Adjustment Letters; Job application and Resumes." },
+          { "t": "Reports", "x": "Types; Structure, Style & Writing of Reports." },
+          { "t": "Technical Proposal", "x": "Parts; Types; Writing of Proposal; Significance." },
+          { "t": "Delivery and Presentation Skills", "e": 1, "x": "Nuances of Delivery; Body Language; Dimensions of Speech: Syllable; Accent; Pitch; Rhythm; Intonation; Paralinguistic features of voice; Communication skills, Presentation strategies, Group Discussion; Interview skills; Workshop; Conference; Seminars." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC104",
+      "name": "Discrete Mathematics",
+      "type": "Theory",
+      "ltp": "3-0-0",
+      "credits": 3,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Set Theory", "x": "Introduction, Size of sets and Cardinals, Venn diagrams, Combination of sets, Multisets, Ordered pairs and Set Identities." },
+          { "t": "Relation", "x": "Definition, Operations on relations, Composite relations, Properties of relations, Equality of relations, Partial order relation." },
+          { "t": "Functions", "x": "Definition, Classification of functions, Operations on functions, Recursively defined functions." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Posets, Hasse Diagram and Lattices", "x": "Introduction, Partial ordered sets, Combination of Partial ordered sets, Hasse diagram, Introduction of lattices, Properties of lattices – Bounded, Complemented, Modular and Complete lattice." },
+          { "t": "Boolean Algebra", "x": "Introduction, Axioms and Theorems of Boolean algebra, Boolean functions. Simplification of Boolean functions, Karnaugh maps, Logic gates." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Propositional", "x": "Propositions, Truth tables, Tautology, Contradiction, Algebra of Propositions, Theory of Inference and Natural Detection." },
+          { "t": "Predicate Logic", "x": "Theory of Predicates, First order predicate, Predicate formulas, Quantifiers, Inference theory of predicate logic." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Algebraic Structures", "x": "Introduction to algebraic Structures and properties. Types of algebraic structures: Semi group, Monoid, Group, Abelian group and Properties of group. Subgroup, Cyclic group, Cosets, Permutation groups, Homomorphism and Isomorphism of groups." },
+          { "t": "Rings and Fields", "x": "Definition and elementary properties of Rings and Fields." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Natural Numbers", "x": "Introduction, Piano's axioms, Mathematical Induction, Strong Induction and Induction with Nonzero Base cases." },
+          { "t": "Recurrence Relation & Generating functions", "x": "Introduction and properties of Generating Functions. Simple Recurrence relation with constant coefficients and Linear recurrence relation without constant coefficients. Methods of solving recurrences." },
+          { "t": "Combinatorics", "x": "Introduction, Counting techniques and Pigeonhole principle, Polya's Counting theorem." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC105",
+      "name": "Computer Organization & Architecture",
+      "type": "Theory",
+      "ltp": "3-1-0",
+      "credits": 4,
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Introduction", "x": "Functional units of digital system and their interconnections, buses, bus architecture, types of buses and bus arbitration. Register, bus and memory transfer." },
+          { "t": "Processor organization", "x": "general registers organization, stack organization and addressing modes." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Arithmetic and logic unit", "x": "Look ahead carries adders. Multiplication: Signed operand multiplication, Booths algorithm and array multiplier. Division and logic operations. Floating point arithmetic operation, Arithmetic & logic unit design. IEEE Standard for Floating Point Numbers." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Control Unit", "x": "Instruction types, formats, instruction cycles and sub cycles (fetch and execute etc.), micro-operations, execution of a complete instruction. Program Control, Reduced Instruction Set Computer, Pipelining. Hardwire and micro programmed control: micro-program sequencing, concept of horizontal and vertical microprogramming." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Memory", "x": "Basic concept and hierarchy, semiconductor RAM memories, 2D & 2 1/2D memory organization. ROM memories. Cache memories: concept and design issues & performance, address mapping and replacement Auxiliary memories: magnetic disk, magnetic tape and optical disks Virtual memory: concept implementation." }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Input / Output", "x": "Peripheral devices, I/O interface, I/O ports, Interrupts: interrupt hardware, types of interrupts and exceptions. Modes of Data Transfer: Programmed I/O, interrupt initiated I/O and Direct Memory Access., I/O channels and processors." },
+          { "t": "Serial Communication", "x": "Synchronous & asynchronous communication, standard communication interfaces." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC106",
+      "name": "Cyber Security",
+      "type": "Theory",
+      "ltp": "2-0-0",
+      "credits": 0,
+      "note": "Qualifying non-credit course",
+      "units": [
+        { "no": "I", "topics": [
+          { "t": "Introduction", "x": "Introduction to Information Systems, Types of Information Systems, Development of Information Systems, Introduction to Information Security and CIA triad, Need for Information Security, Threats to Information Systems, Information Assurance and Security Risk Analysis, Cyber Security." }
+        ] },
+        { "no": "II", "topics": [
+          { "t": "Application Security", "x": "(Database, E-mail and Internet), Data Security Considerations (Backups, Archival Storage and Disposal of Data), Security Technology (Firewall, VPNs, Intrusion Detection System), Access Control." },
+          { "t": "Security Threats", "x": "Viruses, Worms, Trojan Horse, Bombs, Trapdoors, Spoofs, E-mail Viruses, Macro Viruses, Malicious Software, Network and Denial of Services Attack." }
+        ] },
+        { "no": "III", "topics": [
+          { "t": "Introduction to E-Commerce", "x": "Threats to E-Commerce, Electronic Payment System, e-Cash, Credit/Debit Cards. Digital Signature, Cryptography Developing Secure Information Systems, Application Development Security, Information Security Governance & Risk Management, Security Architecture & Design Security Issues in Hardware, Data Storage & Downloadable Devices, Physical Security of IT Assets - Access Control, CCTV, Backup Security Measures." }
+        ] },
+        { "no": "IV", "topics": [
+          { "t": "Security Policies", "x": "Why policies should be developed, Policy Review Process, Publication and Notification Requirement of policies, Types of policies – WWW policies, Email Security policies, Corporate Policies, Sample Security Policies." },
+          { "t": "Case Study", "x": "Corporate Security" }
+        ] },
+        { "no": "V", "topics": [
+          { "t": "Information Security Standards", "x": "ISO, IT Act, Copyright Act, IPR. Cyber Crimes, Cyber Laws in India; IT Act 2000 Provisions, Intellectual Property Law, Copy Right Law, Semiconductor Law and Patent Law, Software Piracy and Software License." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC151",
+      "name": "Problem Solving using C Lab",
+      "type": "Practical",
+      "ltp": "0-0-4",
+      "credits": 2,
+      "units": [
+        { "no": "Lab", "topics": [
+          { "t": "Program to implement conditional statements in C language." },
+          { "t": "Program to implement switch-case statement in C language" },
+          { "t": "Program to implement looping constructs in C language." },
+          { "t": "Program to perform basic input-output operations in C language." },
+          { "t": "Program to implement user defined functions in C language." },
+          { "t": "Program to implement recursive functions in C language." },
+          { "t": "Program to implement one-dimensional arrays in C language." },
+          { "t": "Program to implement two-dimensional arrays in C language." },
+          { "t": "Program to perform various operations on two-dimensional arrays in C language." },
+          { "t": "Program to implement multi-dimensional arrays in C language." },
+          { "t": "Program to implement string manipulation functions in C language." },
+          { "t": "Program to implement structure in C language." },
+          { "t": "Program to implement union in C language." },
+          { "t": "Program to perform file handling operations in C language." },
+          { "t": "Program to perform graphical operations in C language." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC152",
+      "name": "Computer Organization & Architecture Lab",
+      "type": "Practical",
+      "ltp": "0-0-3",
+      "credits": 2,
+      "units": [
+        { "no": "Lab", "topics": [
+          { "t": "Implement HALF ADDER, FULL ADDER using basic logic gates." },
+          { "t": "Implement Binary -to -Gray, Gray -to -Binary code conversions." },
+          { "t": "Implement 3-8 line DECODER. Implementing 4x1 and 8x1 MULTIPLEXERS." },
+          { "t": "Verify the excitation tables of various FLIP-FLOPS." },
+          { "t": "Design of an 8-bit Input/ Output system with four 8-bit Internal Registers." },
+          { "t": "Design of an 8-bit ARITHMETIC LOGIC UNIT." },
+          { "t": "Design the data path of a computer from its register transfer language description." },
+          { "t": "Design the control unit of a computer using either hardwiring or microprogramming based on its register transfer language description." },
+          { "t": "Implement a simple instruction set computer with a control unit and a data path." }
+        ] }
+      ]
+    },
+    {
+      "code": "BMC153",
+      "name": "Professional Communication Lab",
+      "type": "Practical",
+      "ltp": "0-0-2",
+      "credits": 2,
+      "units": [
+        { "no": "Lab", "topics": [
+          { "t": "Group Discussion: participating in group discussions- understanding group dynamics." },
+          { "t": "GD strategies-activities to improve GD skills. Practical based on Accurate and Current Grammatical Patterns." },
+          { "t": "Interview Etiquette-dress code, body language attending job interview – Telephone/Skype interview one to one interview & Panel interview." },
+          { "t": "Communication Skills for Seminars/Conferences/Workshops with emphasis on Paralinguistic/ Kinesics, practicing word stress, rhythm in sentences, weak forms, intonation." },
+          { "t": "Oral Presentation Skills for Technical Paper/Project Reports/ Professional Reports based on proper Stress and Intonation Mechanics voice modulation, Audience Awareness, Presentation plan visual aids." },
+          { "t": "Speaking: Fluency & Accuracy in speech- positive thinking, Improving Self-expression Developing persuasive speaking skills, pronunciation practice (for accept neutralization) particularly of problem sounds, in isolated words as well as sentences." },
+          { "t": "Individual Speech Delivery/Conferences with skills to defend Interjections/Quizzes." },
+          { "t": "Argumentative Skills/Role Play Presentation with Stress and Intonation." },
+          { "t": "Comprehension Skills based on Reading and Listening Practical's on a model Audio-Visual Usage." }
+        ] }
+      ]
+    }
+  ]
+}

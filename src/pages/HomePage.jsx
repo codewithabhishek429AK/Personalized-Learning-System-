@@ -1,3 +1,6 @@
+import Logo from "../components/Logo";
+import SiteFooter from "../components/SiteFooter";
+import { curriculumTotals } from "../Data/mca";
 
 function HomePage({ onLogin, onOpenSubject }) {
   const subjects = [
@@ -17,9 +20,7 @@ function HomePage({ onLogin, onOpenSubject }) {
     <div className="min-h-screen bg-[#F3F1FF] text-[#010737]">
       {/* NAVBAR */}
       <nav className="sticky top-0 z-50 flex items-center justify-between border-b border-[#DCD8FF] bg-[#F3F1FF]/95 px-6 py-5 backdrop-blur-md">
-        <h2 className="bg-gradient-to-r from-[#6840D9] to-[#3B0CA3] bg-clip-text text-2xl font-extrabold tracking-tight text-transparent">
-          LearnCraft
-        </h2>
+        <Logo size={40} />
 
         <div className="hidden items-center gap-8 md:flex">
           <a
@@ -115,7 +116,7 @@ function HomePage({ onLogin, onOpenSubject }) {
       {/* LEARNING FEATURES */}
       <section className="mx-auto grid max-w-6xl grid-cols-2 gap-4 px-6 py-16 md:grid-cols-4">
         {[
-          { number: "04+", label: "Learning Subjects" },
+          { number: String(curriculumTotals.subjects), label: "MCA Subjects (4 Semesters)" },
           { number: "AI", label: "Smart Learning" },
           { number: "Quiz", label: "Practice Questions" },
           { number: "100%", label: "Self Learning" },
@@ -192,23 +193,7 @@ function HomePage({ onLogin, onOpenSubject }) {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer
-        id="about"
-        className="border-t border-[#DCD8FF] bg-[#F3F1FF] px-6 py-10 text-center"
-      >
-        <h2 className="bg-gradient-to-r from-[#6840D9] to-[#3B0CA3] bg-clip-text text-2xl font-extrabold text-transparent">
-          LearnCraft
-        </h2>
-
-        <p className="mt-3 text-[#333B69]">
-          Learn Smarter. Prepare Better.
-        </p>
-
-        <p className="mt-5 text-sm text-[#333B69]/70">
-          © 2026 LearnCraft | Personalized Learning System
-        </p>
-      </footer>
+      <SiteFooter id="about" />
     </div>
   );
 }

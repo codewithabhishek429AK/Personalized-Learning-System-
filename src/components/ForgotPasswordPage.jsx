@@ -1,6 +1,8 @@
 
 import { useState } from "react";
 
+import Logo from "./Logo";
+
 export default function ForgotPasswordPage({
   onBack,
   onLogin,
@@ -49,15 +51,7 @@ export default function ForgotPasswordPage({
           {/* Logo */}
           <div className="relative z-10">
             <div className="inline-flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-xl">
-              <img
-                src="/Images/LearnCraft-Logo.png"
-                alt="LearnCraft Logo"
-                className="h-10 w-10 object-contain"
-              />
-
-              <span className="text-2xl font-extrabold text-[#3B0CA3]">
-                LearnCraft
-              </span>
+              <Logo size={40} to={null} />
             </div>
           </div>
 

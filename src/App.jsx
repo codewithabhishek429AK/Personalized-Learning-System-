@@ -3,6 +3,7 @@ import {
   Routes,
   Route,
   Navigate,
+  useLocation,
   useNavigate,
 } from "react-router-dom";
 
@@ -20,52 +21,44 @@ import DashboardRoute from "./components/DashboardRoute";
 import AIQuizGenerator from "./components/AIQuizGenerator";
 
 import { apiRequest } from "./utils/api";
+import { setToken, clearSession } from "./utils/auth";
 
 function App() {
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const subjectIds = {
-    DBMS: 1,
-    "Operating Systems": 2,
-    "Data Structures": 3,
-    "Web Technology": 4,
-  };
-
-  const dashboardSubjectIds = {
-    DBMS: 1,
-    OS: 2,
-    DSA: 3,
-    WT: 4,
+  // Home page cards -> official AKTU subject codes
+  const subjectCodes = {
+    DBMS: "BMC204",
+    "Operating Systems": "BMC203",
+    "Data Structures": "BMC205",
+    "Web Technology": "BMC201",
   };
 
   const openSubject = (subjectName) => {
-    const subjectId = subjectIds[subjectName];
+    const code = subjectCodes[subjectName];
 
-    if (subjectId) {
-      navigate(`/subjects/${subjectId}`);
-    }
-  };
-
-  const openDashboardSubject = (shortName) => {
-    const subjectId = dashboardSubjectIds[shortName];
-
-    if (subjectId) {
-      navigate(`/subjects/${subjectId}`);
+    if (code) {
+      navigate(`/subjects/${code}`);
     }
   };
 
   // Login API
-  const handleLogin = async ({ email, password }) => {
+  const handleLogin = async ({ email, password, rememberMe }) => {
     const data = await apiRequest("/auth/login", {
       method: "POST",
       body: JSON.stringify({ email, password }),
     });
 
-    localStorage.setItem("learncraft-token", data.token);
+    setToken(data.token, rememberMe);
 
-    alert("Login successful! Welcome to LearnCraft.");
+    // Return to the page the student came from (e.g. a topic link)
+    const from = location.state?.from;
 
-    navigate("/dashboard", { replace: true });
+    navigate(
+      typeof from === "string" && from.startsWith("/") ? from : "/dashboard",
+      { replace: true }
+    );
   };
 
   // Registration API
@@ -82,7 +75,7 @@ function App() {
 
   // Logout
   const handleLogout = () => {
-    localStorage.removeItem("learncraft-token");
+    clearSession();
     navigate("/", { replace: true });
   };
 
@@ -140,10 +133,7 @@ function App() {
         <Route
           path="/dashboard"
           element={
-            <DashboardRoute
-              onLogout={handleLogout}
-              onOpenSubject={openDashboardSubject}
-            />
+            <DashboardRoute onLogout={handleLogout} />
           }
         />
 

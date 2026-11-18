@@ -1,6 +1,8 @@
 
 import { useEffect, useState } from "react";
 import { apiRequest } from "../utils/api";
+import SiteNavbar from "./SiteNavbar";
+import SiteFooter from "./SiteFooter";
 
 function TopicPage({
   topic,
@@ -8,6 +10,7 @@ function TopicPage({
   onComplete,
   subjectId,
   topicId,
+  isCompleted = false,
 }) {
   // AI Lesson states
   const [lesson, setLesson] = useState(null);
@@ -15,7 +18,6 @@ function TopicPage({
   const [lessonError, setLessonError] = useState("");
 
   // Existing topic material fallback
-  const studyMaterial = topic.studyMaterial;
   const importantPoints = topic.importantPoints || [];
 
   // Quiz generation states
@@ -45,40 +47,66 @@ function TopicPage({
   // GENERATE AI STUDY LESSON AUTOMATICALLY
   // ==========================================
 
-  async function loadAILesson() {
+  const [lessonAttempt, setLessonAttempt] = useState(0);
+  const [isMarkedComplete, setIsMarkedComplete] = useState(isCompleted);
+  const [completeError, setCompleteError] = useState("");
+
+  async function handleMarkComplete() {
     try {
-      setIsLessonLoading(true);
-      setLessonError("");
-      setLesson(null);
-
-      const data = await apiRequest("/ai/generate-lesson", {
-        method: "POST",
-        body: JSON.stringify({
-          subject:
-            topic.subject ||
-            topic.subjectName ||
-            "Computer Science",
-          topic: topic.title,
-        }),
-      });
-
-      if (!data.success || !data.lesson) {
-        throw new Error("Unable to load study material.");
-      }
-
-      setLesson(data.lesson);
+      setCompleteError("");
+      await onComplete?.();
+      setIsMarkedComplete(true);
     } catch (error) {
-      setLessonError(
-        error.message || "Unable to generate study material."
-      );
-    } finally {
-      setIsLessonLoading(false);
+      setCompleteError(error.message || "Unable to save your progress.");
     }
   }
 
+  function loadAILesson() {
+    setIsLessonLoading(true);
+    setLessonError("");
+    setLesson(null);
+    setLessonAttempt((attempt) => attempt + 1);
+  }
+
   useEffect(() => {
-    loadAILesson();
-  }, [topic.title]);
+    let ignore = false;
+
+    async function fetchLesson() {
+      try {
+        const data = await apiRequest("/ai/generate-lesson", {
+          method: "POST",
+          body: JSON.stringify({
+            subjectCode: subjectId,
+            topicId,
+          }),
+        });
+
+        if (!data.success || !data.lesson) {
+          throw new Error("Unable to load study material.");
+        }
+
+        if (!ignore) {
+          setLesson(data.lesson);
+        }
+      } catch (error) {
+        if (!ignore) {
+          setLessonError(
+            error.message || "Unable to generate study material."
+          );
+        }
+      } finally {
+        if (!ignore) {
+          setIsLessonLoading(false);
+        }
+      }
+    }
+
+    fetchLesson();
+
+    return () => {
+      ignore = true;
+    };
+  }, [subjectId, topicId, lessonAttempt]);
 
   // ==========================================
   // GENERATE AI PRACTICE QUIZ
@@ -95,11 +123,8 @@ function TopicPage({
       const data = await apiRequest("/ai/generate-quiz", {
         method: "POST",
         body: JSON.stringify({
-          subject:
-            topic.subject ||
-            topic.subjectName ||
-            "Computer Science",
-          topic: topic.title,
+          subjectCode: subjectId,
+          topicId,
           difficulty,
           numberOfQuestions: Number(numberOfQuestions),
         }),
@@ -246,20 +271,7 @@ function TopicPage({
   return (
     <div className="min-h-screen bg-[#F3F1FF] text-[#010737]">
 
-      {/* NAVBAR */}
-      <nav className="sticky top-0 z-50 flex items-center border-b border-[#DCD8FF] bg-[#F3F1FF]/95 px-6 py-4 backdrop-blur-md">
-        <div className="flex items-center gap-2">
-          <img
-            src="/Images/learncraft-logo.png"
-            alt="LearnCraft Logo"
-            className="h-11 w-11 object-contain"
-          />
-
-          <h2 className="bg-gradient-to-r from-[#1237D5] via-[#4820B8] to-[#6416C8] bg-clip-text text-2xl font-extrabold text-transparent">
-            LearnCraft
-          </h2>
-        </div>
-      </nav>
+      <SiteNavbar />
 
       <main className="mx-auto max-w-5xl px-6 py-10">
 
@@ -282,6 +294,9 @@ function TopicPage({
           </h1>
 
           <p className="mt-4 leading-7 text-[#333B69]">
+            <span className="font-bold text-[#3B0CA3]">
+              Official syllabus coverage:{" "}
+            </span>
             {topic.description}
           </p>
 
@@ -594,11 +609,15 @@ function TopicPage({
               <div className="mt-6 grid gap-5 md:grid-cols-2">
 
                 <div>
-                  <label className="mb-2 block font-semibold text-[#333B69]">
+                  <label
+                    htmlFor="quiz-difficulty"
+                    className="mb-2 block font-semibold text-[#333B69]"
+                  >
                     Difficulty Level
                   </label>
 
                   <select
+                    id="quiz-difficulty"
                     value={difficulty}
                     onChange={(event) => setDifficulty(event.target.value)}
                     className="w-full rounded-xl border border-[#DCD8FF] bg-white p-3 outline-none focus:border-[#6840D9]"
@@ -610,11 +629,15 @@ function TopicPage({
                 </div>
 
                 <div>
-                  <label className="mb-2 block font-semibold text-[#333B69]">
+                  <label
+                    htmlFor="quiz-count"
+                    className="mb-2 block font-semibold text-[#333B69]"
+                  >
                     Number of Questions
                   </label>
 
                   <select
+                    id="quiz-count"
                     value={numberOfQuestions}
                     onChange={(event) =>
                       setNumberOfQuestions(Number(event.target.value))
@@ -829,28 +852,22 @@ function TopicPage({
           </p>
 
           <button
-            onClick={onComplete}
-            className="mt-6 rounded-xl bg-gradient-to-r from-[#6840D9] to-[#3B0CA3] px-7 py-3 font-semibold text-white shadow-md transition hover:-translate-y-0.5"
+            onClick={handleMarkComplete}
+            disabled={isMarkedComplete}
+            className="mt-6 rounded-xl bg-gradient-to-r from-[#6840D9] to-[#3B0CA3] px-7 py-3 font-semibold text-white shadow-md transition hover:-translate-y-0.5 disabled:cursor-default disabled:opacity-70 disabled:hover:translate-y-0"
           >
-            ✓ Mark as Completed
+            {isMarkedComplete ? "✓ Completed" : "✓ Mark as Completed"}
           </button>
+
+          {completeError && (
+            <p role="alert" className="mt-3 text-sm text-red-600">
+              {completeError}
+            </p>
+          )}
         </section>
       </main>
 
-      {/* FOOTER */}
-      <footer className="mt-12 border-t border-[#DCD8FF] bg-[#F3F1FF] px-6 py-8 text-center">
-        <h2 className="bg-gradient-to-r from-[#1237D5] to-[#6416C8] bg-clip-text text-xl font-extrabold text-transparent">
-          LearnCraft
-        </h2>
-
-        <p className="mt-2 text-sm text-[#333B69]">
-          Learn Smarter. Prepare Better.
-        </p>
-
-        <p className="mt-4 text-xs text-[#333B69]/70">
-          © 2026 LearnCraft | Personalized Learning System
-        </p>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

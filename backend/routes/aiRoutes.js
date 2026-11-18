@@ -1,4 +1,3 @@
-/* global require, module */
 
 const express = require("express");
 const protect = require("../middleware/authMiddleware");

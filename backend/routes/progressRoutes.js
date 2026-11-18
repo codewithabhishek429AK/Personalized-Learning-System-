@@ -1,5 +1,4 @@
 
-/* global require, module */
 
 const express = require("express");
 
